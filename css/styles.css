@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+body{
+    background-color: rgb(21, 82, 21);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    width: 120px;
+    height: 50px;
+    color: hsl(0, 0%, 100%);
+    outline: none;
+    margin: 50px;
+    background-color: hsl(120, 100%, 25%);
+}
+
+#showing {
+   
+    
+}
+.cardsred{
+    color: red;
+}
+.card{
+    width: 207px;
+    height: 321px;
+    padding: 12px;
+    background: hsl(0, 0%, 100%);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0px rgb(2, 19, 2);
+    position: relative;
+    display: flex;
+    justify-content:space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+.cuadrado{
+    width: 102px; 
+    height: 181px; 
+    position: absolute;
+    top:22%;
+    right: 26%;
+    z-index: 9;
+}
+.black {
+    border: solid 2px black;
+}
+.red{
+    border: solid 2px red;
+}
+.up{
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.down{
+    font-size: 3rem;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 85px;
+    /* transform: rotate(180deg); */
+    box-sizing: border-box;
+}
+
+/* .card:nth-child(1){
+    font-size: 2.1rem;
+    display: flex;
+    justify-content:flex-start;
+    align-items: flex-start;
+} */
+.cartatapada{
+    background: url(../imagenes/back.jpg.png)no-repeat;
+    background-size: contain; 
+
+   
+}
