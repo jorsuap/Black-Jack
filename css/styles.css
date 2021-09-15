@@ -17,7 +17,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
 button {
@@ -29,10 +28,6 @@ button {
     background-color: hsl(120, 100%, 25%);
 }
 
-#showing {
-   
-    
-}
 .cardsred{
     color: red;
 }
@@ -49,13 +44,14 @@ button {
     align-items: flex-start;
     flex-direction: row;
     box-sizing: border-box;
+    margin: 10px;
 }
 .cuadrado{
     width: 102px; 
     height: 181px; 
     position: absolute;
     top:22%;
-    right: 26%;
+    right: 25%;
     z-index: 9;
 }
 .black {
@@ -79,20 +75,21 @@ button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-left: 85px;
-    /* transform: rotate(180deg); */
+    transform: rotate(180deg);
     box-sizing: border-box;
 }
 
-/* .card:nth-child(1){
-    font-size: 2.1rem;
-    display: flex;
-    justify-content:flex-start;
-    align-items: flex-start;
-} */
+
 .cartatapada{
     background: url(../imagenes/back.jpg.png)no-repeat;
     background-size: contain; 
-
-   
+}
+.k{
+    background: url(../imagenes/k.png)no-repeat;
+}
+.q{
+    background: url(../imagenes/q.png)no-repeat;
+}
+.j{
+    background: url(../imagenes/j.png)no-repeat;
 }
