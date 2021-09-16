@@ -8,6 +8,9 @@ let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 
 function cartaAleatoria() {
 
+    let singleCard = cards[Math.floor(Math.random() * cards.length)];
+    let singleNumber = numbers[Math.floor(Math.random() * numbers.length)];
+
     const crearCarta = document.createElement('div');
     crearCarta.classList.add('card');
     container.appendChild(crearCarta);
@@ -40,8 +43,6 @@ function cartaAleatoria() {
     cuadrado.classList.add('cuadrado');
     crearCarta.appendChild(cuadrado);
 
-    let singleCard = cards[Math.floor(Math.random() * cards.length)];
-    let singleNumber = numbers[Math.floor(Math.random() * numbers.length)];
 
     if (singleCard === '♥' || singleCard === '♦') {
 
@@ -68,11 +69,99 @@ function cartaAleatoria() {
         case 'K':
             cuadrado.classList.add('k');
             break;
+        case 'A':
+            cuadrado.classList.add('a')
+            cuadrado.innerHTML = `${singleNumber}`;
+            break;
+        case '2':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                cuadrado.classList.add('dosytres');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
+        case '3':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                cuadrado.classList.add('dosytres');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
+            case '4':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                cuadrado.classList.add('cuatro');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
+            case '5':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                if(i===2){
+                    span.classList.add('item5');
+                }
+                cuadrado.classList.add('cinco');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
+            case '6':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                cuadrado.classList.add('six');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
+            case '7':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                if(i===2){
+                    span.classList.add('item7');
+                }
+                if(i===7){
+                    span.classList.add('span7');
+                }
+                cuadrado.classList.add('seven');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
+            case '8':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                if(i===2){
+                    span.classList.add('item8');
+                }
+                if(i===7){
+                    span.classList.add('span8');
+                }
+                cuadrado.classList.add('ocho');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
     };
 
     upNumber.innerHTML = `${singleNumber}`;
     upSimbol.innerHTML = `${singleCard}`;
     downNumber.innerHTML = `${singleNumber}`;
     downSimbol.innerHTML = `${singleCard}`;
-
 };

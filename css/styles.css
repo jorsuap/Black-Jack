@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -5,14 +7,16 @@
     font-weight: bold;
 }
 
-body{
+body {
     background-color: rgb(21, 82, 21);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-family: 'Dosis', sans-serif;
 }
+
 .container {
     display: flex;
     justify-content: center;
@@ -28,10 +32,11 @@ button {
     background-color: hsl(120, 100%, 25%);
 }
 
-.cardsred{
+.cardsred {
     color: red;
 }
-.card{
+
+.card {
     width: 207px;
     height: 321px;
     padding: 12px;
@@ -40,27 +45,32 @@ button {
     box-shadow: 5px 5px 10px 0px rgb(2, 19, 2);
     position: relative;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: flex-start;
     flex-direction: row;
     box-sizing: border-box;
     margin: 10px;
 }
-.cuadrado{
-    width: 102px; 
-    height: 181px; 
+
+.cuadrado {
+    width: 102px;
+    height: 181px;
     position: absolute;
-    top:22%;
+    top: 22%;
     right: 25%;
     z-index: 9;
 }
+
 .black {
     border: solid 2px black;
 }
-.red{
+
+.red {
     border: solid 2px red;
+    color: red;
 }
-.up{
+
+.up {
     font-size: 3rem;
     display: flex;
     justify-content: center;
@@ -68,7 +78,15 @@ button {
     flex-direction: column;
 }
 
-.down{
+.up__simbol {
+    font-size: 3.5rem;
+}
+
+.down__simbol {
+    font-size: 3.5rem;
+}
+
+.down {
     font-size: 3rem;
     display: flex;
     align-self: flex-end;
@@ -80,16 +98,102 @@ button {
 }
 
 
-.cartatapada{
+.cartatapada {
     background: url(../imagenes/back.jpg.png)no-repeat;
-    background-size: contain; 
+    background-size: contain;
 }
-.k{
+
+.k {
     background: url(../imagenes/k.png)no-repeat;
 }
-.q{
+
+.q {
     background: url(../imagenes/q.png)no-repeat;
 }
-.j{
+
+.j {
     background: url(../imagenes/j.png)no-repeat;
+}
+
+.a {
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.dosytres {
+    font-size: 2.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cuatro{
+    font-size: 2.9rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px 25px;
+    padding: 10px;
+}
+.cinco{
+    font-size: 2.9rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    gap: 50px 0px;
+    padding: 0 4px;
+}
+.item5{
+    grid-area: 1/2/3/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.six{
+    font-size: 2.9rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    gap: 0px 25px;
+    padding: 0 10px 40px 10px;
+}
+.seven{
+    font-size: 2.9rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    gap: 0px 3px;
+}
+.item7{
+    grid-area: 1/2/3/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.span7{
+    grid-area: 3/3/3/3;
+}
+.ocho{
+    font-size: 2.9rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    gap: 0px 5px;
+}
+.item8{
+    grid-area: 1/2/3/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.span8{
+    grid-area: 1/2/4/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
 }
