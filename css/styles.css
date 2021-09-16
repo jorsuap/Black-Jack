@@ -18,22 +18,43 @@ body {
 }
 
 .container {
+    width: 100%;
+    height: 320px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.continerBoot{
+    width: 100%;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0 30px 0;
+}
 
-button {
+.play {
     width: 120px;
     height: 50px;
     color: hsl(0, 0%, 100%);
     outline: none;
-    margin: 50px;
+    margin: 20px;
     background-color: hsl(120, 100%, 25%);
+}
+.plantarse{
+    width: 120px;
+    height: 50px;
+    color: hsl(0, 0%, 100%);
+    outline: none;
+    margin: 20px;
+    background-color: hsl(0, 80%, 50%);
 }
 
 .cardsred {
     color: red;
+}
+.cardsblack {
+    color: black;
 }
 
 .card {
@@ -41,15 +62,15 @@ button {
     height: 321px;
     padding: 12px;
     background: hsl(0, 0%, 100%);
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px 0px rgb(2, 19, 2);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 5px rgb(2, 19, 2);
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: row;
-    box-sizing: border-box;
-    margin: 10px;
+    margin: 50px 10px;
+    z-index: 2;
 }
 
 .cuadrado {
@@ -58,7 +79,7 @@ button {
     position: absolute;
     top: 22%;
     right: 25%;
-    z-index: 9;
+    z-index: 1;
 }
 
 .black {
@@ -228,4 +249,37 @@ button {
 .span10{
     grid-area: 1/2/6/3;
     margin-top: 95px;
+}
+.text__count{
+    margin-top: 30px;
+    background: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: solid 1px #39ff14;
+    visibility: hidden;
+}
+.text__count-boot{
+    margin-top: 30px;
+    background: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: solid 1px #39ff14;
+    visibility: hidden;
+}
+
+/*RESPONSIVE*/
+
+@media(max-width: 1024px){
+    .card{
+        margin: 10px -30px;
+    }
+}
+@media(max-width: 850px){
+    .card{
+        margin: 10px -70px;
+    }
 }
