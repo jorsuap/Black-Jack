@@ -71,7 +71,7 @@ function cartaAleatoria() {
             break;
         case 'A':
             cuadrado.classList.add('a')
-            cuadrado.innerHTML = `${singleNumber}`;
+            cuadrado.innerHTML = `${singleCard}`;
             break;
         case '2':
             parseInt(singleNumber);
@@ -154,6 +154,35 @@ function cartaAleatoria() {
                     span.classList.add('span8');
                 }
                 cuadrado.classList.add('ocho');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
+            case '9':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                if(i===5){
+                    span.classList.add('item9');
+                }
+                cuadrado.classList.add('nine');
+                span.innerHTML = `${singleCard}`;
+                cuadrado.appendChild(span);
+            }
+            break;
+            case '10':
+            parseInt(singleNumber);
+            console.log(singleNumber);
+            for (let i = 1; i <= singleNumber; i++) {
+                const span = document.createElement('span');
+                if(i===5){
+                    span.classList.add('item10');
+                }
+                if(i===10){
+                    span.classList.add('span10');
+                }
+                cuadrado.classList.add('ten');
                 span.innerHTML = `${singleCard}`;
                 cuadrado.appendChild(span);
             }

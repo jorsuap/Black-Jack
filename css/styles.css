@@ -182,7 +182,7 @@ button {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
-    gap: 0px 5px;
+    gap: 0px 3px;
 }
 .item8{
     grid-area: 1/2/3/3;
@@ -196,4 +196,36 @@ button {
     justify-content: center;
     align-items: center;
     margin-top: 60px;
+}
+.nine{
+    font-size: 2.9rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows:  35px 35px 35px 35px;
+    gap: 3px 3px;
+    margin: 0;
+}
+
+.item9{
+    grid-area: 1/2/5/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.ten{
+    font-size: 2.9rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows:  35px 35px 35px 35px;
+    gap: 5px 3px;
+    margin: 0;
+}
+.item10{
+    grid-area: 1/2/3/3;
+    margin-top: 20px;
+}
+.span10{
+    grid-area: 1/2/6/3;
+    margin-top: 95px;
 }
