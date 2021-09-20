@@ -16,6 +16,7 @@ body {
     align-items: center;
     flex-direction: column;
     font-family: 'Dosis', sans-serif;
+    position: relative;
 }
 
 .container {
@@ -69,7 +70,7 @@ body {
     align-items: flex-start;
     flex-direction: row;
     z-index: 2;
-    margin: 0px;
+    margin: 5px;
 }
 
 .cuadrado {
@@ -133,7 +134,16 @@ span{
 
 .cartatapada {
     background: url(../imagenes/back.jpg.png)no-repeat;
-    background-size: contain;
+    background-size: cover;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    box-shadow:
+      1px 1px 1px rgba(0, 0, 0, 0.2),
+      5px 5px 0 -3px #f6f6f6,
+      6px 6px 2px -3px rgba(0, 0, 0, 0.2),
+      7px 7px 0 -3px #f6f6f6,
+      9px 9px 2px -3px rgba(0, 0, 0, 0.2);
 }
 
 .k {
@@ -295,3 +305,4 @@ span{
         margin: 0px -45px;
     }
 }
+

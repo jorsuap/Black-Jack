@@ -277,8 +277,6 @@ function turnoUser() {
 function turnoBoot() {
     // play.disabled = true; 
 
-
-    
     if(contadorUser>21){
         
         for(let i = 0; i < 2; i++) {
@@ -700,7 +698,7 @@ function turnoBoot() {
 };
 
 function count() {
-    if (contadorUser >= 21) {
+    if (contadorUser > 21) {
         // alert('Te pasaste');
         turnoBoot();
     }
