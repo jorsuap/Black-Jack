@@ -316,20 +316,20 @@ span{
         right: 28px;
     }
     .up__simbol {
-        margin: -15px;
-        font-size: 1rem;
+        margin: -10px;
+        font-size: 1.5rem;
     }
     .down__simbol {
-        margin: -15px;
-        font-size: 1rem;
+        margin: -10px;
+        font-size: 1.5rem;
     }
-    .up {
-        font-size: 1.8rem;
+    .up__number {
+        font-size: 1.5rem;
     }
-
-    .down {
-        font-size: 1.8rem;
+    .down__number{
+        font-size: 1.5rem;
     }
+   
     span{
         font-size: 1rem;
     }
