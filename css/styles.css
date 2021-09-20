@@ -82,7 +82,7 @@ body {
     z-index: 1;
 }
 span{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 .black {
@@ -100,24 +100,19 @@ span{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0;
-    padding: 0;
 }
 
 .up__simbol {
     font-size: 2rem;
-    margin: 0;
-    padding: 0;
+    margin: -10px;
 }
 .up__number {
-    font-size: 2rem;
-    margin: 0;
-    padding: 0;
+    /* font-size: 2rem; */
 }
 
 .down__simbol {
     font-size: 2rem;
-    margin: 0;
+    margin: -10px;
 }
 
 .down {
@@ -148,14 +143,17 @@ span{
 
 .k {
     background: url(../imagenes/k.png)no-repeat;
+    background-size: cover;
 }
 
 .q {
     background: url(../imagenes/q.png)no-repeat;
+    background-size: cover;
 }
 
 .j {
     background: url(../imagenes/j.png)no-repeat;
+    background-size: cover;
 }
 
 .a {
@@ -297,12 +295,48 @@ span{
 
 @media(max-width: 1024px){
     .card{
-        margin: 10px -30px;
+        margin: 0 5px;
     }
 }
 @media(max-width: 850px){
-    .card{
+    /* .card{
         margin: 0px -45px;
-    }
+    } */
 }
+
+@media(max-width: 850px){
+    .card {
+        width: 107px;
+        height: 166px;
+    }
+    .cuadrado {
+        width: 50px;
+        height: 89px;
+        top: 40px;
+        right: 28px;
+    }
+    .up__simbol {
+        margin: -15px;
+    }
+    .down__simbol {
+        margin: -15px;
+    }
+    .up {
+        font-size: 1.8rem;
+    }
+
+    .down {
+        font-size: 1.8rem;
+    }
+    span{
+        font-size: 1.2rem;
+    }
+
+
+
+
+    
+}
+
+
 
