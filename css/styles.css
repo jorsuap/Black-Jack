@@ -95,7 +95,6 @@ span{
 }
 
 .up {
-    font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,19 +103,20 @@ span{
 
 .up__simbol {
     font-size: 2rem;
-    margin: -10px;
+    margin: -12px;
 }
 .up__number {
-    /* font-size: 2rem; */
+    font-size: 2rem;
 }
-
+.down__number{
+    font-size: 2rem;
+}
 .down__simbol {
     font-size: 2rem;
-    margin: -10px;
+    margin: -12px;
 }
 
 .down {
-    font-size: 2rem;
     display: flex;
     align-self: flex-end;
     justify-content: center;
