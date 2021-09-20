@@ -9,6 +9,7 @@
 
 body {
     background-color: rgb(21, 82, 21);
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -19,34 +20,32 @@ body {
 
 .container {
     width: 100%;
-    height: 320px;
+    height: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .continerBoot{
     width: 100%;
-    height: 320px;
+    height: 240px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 30px 0 30px 0;
 }
 
 .play {
     width: 120px;
-    height: 50px;
+    height: 30px;
     color: hsl(0, 0%, 100%);
     outline: none;
-    margin: 20px;
+    margin: 10px;
     background-color: hsl(120, 100%, 25%);
 }
 .plantarse{
     width: 120px;
-    height: 50px;
+    height: 30px;
     color: hsl(0, 0%, 100%);
     outline: none;
-    margin: 20px;
     background-color: hsl(0, 80%, 50%);
 }
 
@@ -58,28 +57,31 @@ body {
 }
 
 .card {
-    width: 207px;
-    height: 321px;
+    width: 145px;
+    height: 225px;
     padding: 12px;
     background: hsl(0, 0%, 100%);
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: 5px 5px 10px 5px rgb(2, 19, 2);
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: row;
-    margin: 50px 10px;
     z-index: 2;
+    margin: 0px;
 }
 
 .cuadrado {
-    width: 102px;
-    height: 181px;
+    width: 74px;
+    height: 131px;
     position: absolute;
-    top: 22%;
-    right: 25%;
+    top: 47px;
+    right: 35px;
     z-index: 1;
+}
+span{
+    font-size: 1.8rem;
 }
 
 .black {
@@ -92,23 +94,33 @@ body {
 }
 
 .up {
-    font-size: 3rem;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
 
 .up__simbol {
-    font-size: 3.5rem;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+.up__number {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .down__simbol {
-    font-size: 3.5rem;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .down {
-    font-size: 3rem;
+    font-size: 2rem;
     display: flex;
     align-self: flex-end;
     justify-content: center;
@@ -150,6 +162,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .cuatro{
@@ -157,8 +170,8 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 30px 25px;
-    padding: 10px;
+    gap: 50px 16px;
+    text-align: center;
 }
 .cinco{
     font-size: 2.9rem;
@@ -166,7 +179,7 @@ body {
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
     gap: 50px 0px;
-    padding: 0 4px;
+    text-align: center;
 }
 .item5{
     grid-area: 1/2/3/3;
@@ -180,7 +193,7 @@ body {
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto;
     gap: 0px 25px;
-    padding: 0 10px 40px 10px;
+    text-align: center;
 }
 .seven{
     font-size: 2.9rem;
@@ -188,6 +201,7 @@ body {
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
     gap: 0px 3px;
+    text-align: center;
 }
 .item7{
     grid-area: 1/2/3/3;
@@ -204,6 +218,7 @@ body {
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
     gap: 0px 3px;
+    text-align: center;
 }
 .item8{
     grid-area: 1/2/3/3;
@@ -216,15 +231,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 .nine{
-    font-size: 2.9rem;
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows:  35px 35px 35px 35px;
-    gap: 3px 3px;
-    margin: 0;
+    grid-template-rows:  30px 30px 30px 30px;
+    text-align: center;
 }
 
 .item9{
@@ -232,26 +245,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 5px;
 }
 .ten{
     font-size: 2.9rem;
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows:  35px 35px 35px 35px;
-    gap: 5px 3px;
-    margin: 0;
+    grid-template-rows:  30px 30px 30px 30px;
+    text-align: center;
 }
 .item10{
     grid-area: 1/2/3/3;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 .span10{
     grid-area: 1/2/6/3;
-    margin-top: 95px;
+    margin-top: 75px;
 }
 .text__count{
-    margin-top: 30px;
+    margin-top: 5px;
     background: hsl(0, 0%, 0%);
     color: hsl(0, 0%, 100%);
     padding: 10px 20px;
@@ -261,7 +273,7 @@ body {
     visibility: hidden;
 }
 .text__count-boot{
-    margin-top: 30px;
+    margin: 5px 0 0 0;
     background: hsl(0, 0%, 0%);
     color: hsl(0, 0%, 100%);
     padding: 10px 20px;
@@ -280,6 +292,6 @@ body {
 }
 @media(max-width: 850px){
     .card{
-        margin: 10px -70px;
+        margin: 0px -45px;
     }
 }
