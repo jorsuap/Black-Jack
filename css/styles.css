@@ -337,6 +337,7 @@ span{
     }
     .continerBoot{
         height: 200px;
+        margin-top: 20px;
     }
     .card {
         width: 107px;
