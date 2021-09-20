@@ -317,11 +317,11 @@ span{
         right: 28px;
     }
     .up__simbol {
-        margin: -10px;
+        margin: -5px;
         font-size: 1rem;
     }
     .down__simbol {
-        margin: -10px;
+        margin: -5px;
         font-size: 1rem;
     }
     .up__number {
@@ -332,7 +332,7 @@ span{
     }
    
     span{
-        font-size: .8rem;
+        font-size: .7rem;
     }
     .a {
         font-size: 3rem;
