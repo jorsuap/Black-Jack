@@ -20,6 +20,9 @@ body {
     font-size: 16px;
     position: relative;
 }
+/* .blackjack{
+    height: 100vh;
+} */
 
 .container {
     width: 100%;
@@ -41,7 +44,7 @@ body {
     height: 30px;
     color: hsl(0, 0%, 100%);
     outline: none;
-    margin: 10px;
+    margin: 5px;
     background-color: hsl(120, 100%, 25%);
 }
 .plantarse{
@@ -50,6 +53,7 @@ body {
     color: hsl(0, 0%, 100%);
     outline: none;
     background-color: hsl(0, 80%, 50%);
+    margin: 5px;
 }
 
 .cardsred {
@@ -128,6 +132,16 @@ span{
     box-sizing: border-box;
 }
 
+.botones{
+    position: absolute;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
 
 .cartatapada {
     background: url(../imagenes/back.jpg.png)no-repeat;
@@ -163,7 +177,7 @@ span{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 600;
+    padding-bottom: 10px;
 }
 
 .dosytres {
@@ -271,8 +285,13 @@ span{
     grid-area: 1/2/6/3;
     margin-top: 80px;
 }
+.contadorUser{
+    display: flex;
+    justify-content: center;
+}
 .text__count{
     margin-top: 5px;
+    max-width: 70px;
     background: hsl(0, 0%, 0%);
     color: hsl(0, 0%, 100%);
     padding: 10px 20px;
@@ -280,8 +299,14 @@ span{
     border-radius: 20px;
     border: solid 1px #39ff14;
     visibility: hidden;
+    text-align: center;
+}
+.contadorboot{
+    display: flex;
+    justify-content: center;
 }
 .text__count-boot{
+    max-width: 70px;
     margin: 5px 0 0 0;
     background: hsl(0, 0%, 0%);
     color: hsl(0, 0%, 100%);
@@ -290,13 +315,14 @@ span{
     border-radius: 20px;
     border: solid 1px #39ff14;
     visibility: hidden;
+    text-align: center;
 }
 
 /*RESPONSIVE*/
 
 @media(max-width: 1024px){
     .card{
-        margin: 0 5px;
+        margin: 0 -25px;
     }
 }
 @media(max-width: 850px){
@@ -306,6 +332,12 @@ span{
 }
 
 @media(max-width: 850px){
+    .container {
+        height: 200px;
+    }
+    .continerBoot{
+        height: 200px;
+    }
     .card {
         width: 107px;
         height: 166px;
@@ -315,6 +347,13 @@ span{
         height: 89px;
         top: 40px;
         right: 28px;
+    }
+    .cartatapada {
+        background: url(../imagenes/back.jpg.png)no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 10px;
+        left: 10px;
     }
     .up__simbol {
         margin: -5px;
@@ -335,7 +374,7 @@ span{
         font-size: .7rem;
     }
     .a {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
     .six{
         gap: 15px 5px;
