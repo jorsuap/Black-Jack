@@ -344,12 +344,12 @@ function turnoBoot() {
         cartasBoot.push(carta);
         crearCarta();
 
-    } else if (contadorUser < 21) {
+    } else if (contadorUser <= 21) {
         do {
             repartirCarta(carta);
             cartasBoot.push(carta);
             crearCarta();
-        } while (contadorBoot < contadorUser && contadorBoot <= 21);
+        } while (contadorBoot < contadorUser && contadorBoot < 21);
 
     } else if (contadorUser === 21) {
         repartirCarta(carta);
