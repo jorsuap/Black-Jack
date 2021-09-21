@@ -5,7 +5,7 @@
     margin: 0;
     box-sizing: border-box;
     font-weight: bold;
-    
+
 }
 
 body {
@@ -20,6 +20,7 @@ body {
     font-size: 16px;
     position: relative;
 }
+
 /* .blackjack{
     height: 100vh;
 } */
@@ -31,7 +32,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-.continerBoot{
+
+.continerBoot {
     width: 100%;
     height: 240px;
     display: flex;
@@ -48,7 +50,8 @@ body {
     margin: 5px;
     background-color: hsl(120, 100%, 25%);
 }
-.carta{
+
+.carta {
     width: 120px;
     height: 30px;
     color: hsl(0, 0%, 100%);
@@ -56,7 +59,8 @@ body {
     margin: 5px;
     background-color: hsl(120, 100%, 25%);
 }
-.plantarse{
+
+.plantarse {
     width: 120px;
     height: 30px;
     color: hsl(0, 0%, 100%);
@@ -68,6 +72,7 @@ body {
 .cardsred {
     color: red;
 }
+
 .cardsblack {
     color: black;
 }
@@ -96,7 +101,8 @@ body {
     right: 35px;
     z-index: 1;
 }
-span{
+
+span {
     font-size: 1.5rem;
 }
 
@@ -120,12 +126,15 @@ span{
     font-size: 2rem;
     margin: -12px;
 }
+
 .up__number {
     font-size: 2rem;
 }
-.down__number{
+
+.down__number {
     font-size: 2rem;
 }
+
 .down__simbol {
     font-size: 2rem;
     margin: -12px;
@@ -141,7 +150,7 @@ span{
     box-sizing: border-box;
 }
 
-.botones{
+.botones {
     position: absolute;
     left: 50%;
     top: 95%;
@@ -159,13 +168,14 @@ span{
     top: 20px;
     left: 50px;
     box-shadow:
-      1px 1px 1px rgba(0, 0, 0, 0.2),
-      5px 5px 0 -3px #f6f6f6,
-      6px 6px 2px -3px rgba(0, 0, 0, 0.2),
-      7px 7px 0 -3px #f6f6f6,
-      9px 9px 2px -3px rgba(0, 0, 0, 0.2);
+        1px 1px 1px rgba(0, 0, 0, 0.2),
+        5px 5px 0 -3px #f6f6f6,
+        6px 6px 2px -3px rgba(0, 0, 0, 0.2),
+        7px 7px 0 -3px #f6f6f6,
+        9px 9px 2px -3px rgba(0, 0, 0, 0.2);
 }
-.cartatapada{
+
+.cartatapada {
     width: 145px;
     height: 225px;
     padding: 12px;
@@ -215,7 +225,7 @@ span{
     text-align: center;
 }
 
-.cuatro{
+.cuatro {
     font-size: 2.9rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -223,7 +233,8 @@ span{
     gap: 50px 16px;
     text-align: center;
 }
-.cinco{
+
+.cinco {
     font-size: 2.9rem;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -231,13 +242,15 @@ span{
     gap: 50px 0px;
     text-align: center;
 }
-.item5{
+
+.item5 {
     grid-area: 1/2/3/3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.six{
+
+.six {
     font-size: 2.9rem;
     display: grid;
     grid-template-columns: auto auto;
@@ -245,7 +258,8 @@ span{
     gap: 0px 25px;
     text-align: center;
 }
-.seven{
+
+.seven {
     font-size: 2.9rem;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -253,16 +267,19 @@ span{
     gap: 0px 3px;
     text-align: center;
 }
-.item7{
+
+.item7 {
     grid-area: 1/2/3/3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.span7{
+
+.span7 {
     grid-area: 3/3/3/3;
 }
-.ocho{
+
+.ocho {
     font-size: 2.9rem;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -270,52 +287,60 @@ span{
     gap: 0px 3px;
     text-align: center;
 }
-.item8{
+
+.item8 {
     grid-area: 1/2/3/3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.span8{
+
+.span8 {
     grid-area: 1/2/4/3;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
 }
-.nine{
+
+.nine {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows:  auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
     text-align: center;
 }
 
-.item9{
+.item9 {
     grid-area: 1/2/5/3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.ten{
+
+.ten {
     font-size: 2.9rem;
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows:  auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
     text-align: center;
 }
-.item10{
+
+.item10 {
     grid-area: 1/2/3/3;
     margin-top: 17px;
 }
-.span10{
+
+.span10 {
     grid-area: 1/2/6/3;
     margin-top: 80px;
 }
-.contadorUser{
+
+.contadorUser {
     display: flex;
     justify-content: center;
 }
-.text__count{
+
+.text__count {
     margin-top: 5px;
     max-width: 70px;
     background: hsl(0, 0%, 0%);
@@ -327,11 +352,13 @@ span{
     visibility: hidden;
     text-align: center;
 }
-.contadorboot{
+
+.contadorboot {
     display: flex;
     justify-content: center;
 }
-.text__count-boot{
+
+.text__count-boot {
     max-width: 70px;
     margin: 5px 0 0 0;
     background: hsl(0, 0%, 0%);
@@ -346,38 +373,39 @@ span{
 
 /*RESPONSIVE*/
 
-@media(max-width: 1024px){
-    .card{
+@media(max-width: 1024px) {
+    .card {
         margin: 0 -25px;
     }
 }
-@media(max-width: 850px){
-    /* .card{
-        margin: 0px -45px;
-    } */
-}
 
-@media(max-width: 850px){
+@media(max-width: 850px) {
+
     .container {
         height: 200px;
     }
-    .continerBoot{
+
+    .continerBoot {
         height: 200px;
     }
+
     .card {
         width: 107px;
         height: 166px;
     }
-    .cartatapada{
+
+    .cartatapada {
         width: 107px;
         height: 166px;
     }
+
     .cuadrado {
         width: 50px;
         height: 89px;
         top: 40px;
         right: 28px;
     }
+
     .baraja {
         width: 72px;
         height: 110px;
@@ -387,66 +415,83 @@ span{
         top: 10px;
         left: 35px;
     }
+
     .up__simbol {
         margin: -5px;
         font-size: 1rem;
     }
+
     .down__simbol {
         margin: -5px;
         font-size: 1rem;
     }
+
     .up__number {
         font-size: 1.5rem;
     }
-    .down__number{
+
+    .down__number {
         font-size: 1.5rem;
     }
-   
-    span{
+
+    span {
         font-size: .7rem;
     }
+
     .a {
         font-size: 2.5rem;
     }
-    .six{
+
+    .six {
         gap: 15px 5px;
     }
-    .seven{
+
+    .seven {
         gap: 15px 0px;
     }
-    .item7{
+
+    .item7 {
         margin-top: -3px;
     }
 
-    .ocho{
+    .ocho {
         gap: 15px 0px;
     }
-    .item8{
+
+    .item8 {
         grid-area: 1/2/3/3;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .span8{
+
+    .span8 {
         margin-top: 30px;
-    }    
-    .ten{
+    }
+
+    .ten {
         font-size: 2.9rem;
         display: grid;
         grid-template-columns: auto auto auto;
-        grid-template-rows:  auto auto auto auto;
+        grid-template-rows: auto auto auto auto;
         text-align: center;
         gap: 7px 0;
     }
-    .item10{
+
+    .item10 {
         grid-area: 1/2/3/3;
         margin-top: 12px;
     }
-    .span10{
+
+    .span10 {
         grid-area: 1/2/6/3;
         margin-top: 60px;
     }
+
+    .play,
+    .carta,
+    .plantarse {
+        width: 80px;
+    }
+
 }
-
-
-
