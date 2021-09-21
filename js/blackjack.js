@@ -14,7 +14,7 @@ const youWin = document.querySelector('.win');
 
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9', '10', 
+let numbers = ['A','2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9', '10', 
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
