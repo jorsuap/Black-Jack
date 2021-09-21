@@ -39,7 +39,16 @@ body {
     align-items: center;
 }
 
+
 .play {
+    width: 120px;
+    height: 30px;
+    color: hsl(0, 0%, 100%);
+    outline: none;
+    margin: 5px;
+    background-color: hsl(120, 100%, 25%);
+}
+.carta{
     width: 120px;
     height: 30px;
     color: hsl(0, 0%, 100%);
@@ -143,7 +152,7 @@ span{
     align-items: flex-end;
 }
 
-.cartatapada {
+.baraja {
     background: url(../imagenes/back.jpg.png)no-repeat;
     background-size: cover;
     position: absolute;
@@ -155,6 +164,23 @@ span{
       6px 6px 2px -3px rgba(0, 0, 0, 0.2),
       7px 7px 0 -3px #f6f6f6,
       9px 9px 2px -3px rgba(0, 0, 0, 0.2);
+}
+.cartatapada{
+    width: 145px;
+    height: 225px;
+    padding: 12px;
+    background: hsl(0, 0%, 100%);
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px 5px rgb(2, 19, 2);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    z-index: -1;
+    margin: -20px;
+    background: url(../imagenes/back.jpg.png)no-repeat;
+    background-size: cover;
 }
 
 .k {
@@ -343,13 +369,17 @@ span{
         width: 107px;
         height: 166px;
     }
+    .cartatapada{
+        width: 107px;
+        height: 166px;
+    }
     .cuadrado {
         width: 50px;
         height: 89px;
         top: 40px;
         right: 28px;
     }
-    .cartatapada {
+    .baraja {
         background: url(../imagenes/back.jpg.png)no-repeat;
         background-size: cover;
         position: absolute;
