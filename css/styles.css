@@ -29,6 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .continerBoot {
@@ -38,6 +39,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    position: relative;
 }
 
 
@@ -370,8 +372,7 @@ span {
     text-align: center;
 }
 
-.win,
-.loss {
+.win{
     width: 100%;
     height: 200px;
     background: hsla(0, 0%, 0%, 0.315);
@@ -401,7 +402,15 @@ span {
     top: 20px;
     right: 20px;
 }
-
+.jb{
+    background: url(../imagenes/jb.png) no-repeat;
+    background-size: contain; 
+    width: 120px;
+    height: 120px;
+    top: 60px;
+    position: absolute; 
+    z-index: 999;
+}
 /*RESPONSIVE*/
 
 @media(max-width: 1024px) {
@@ -451,6 +460,11 @@ span {
         width:80px;
         top: 40px;
         right: 15px;
+    }
+    .jb{
+        width: 80px;
+        height: 80px;
+        top: 35px;
     }
     .up__simbol {
         margin: -5px;

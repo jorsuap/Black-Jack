@@ -9,10 +9,12 @@ const plantarse = document.querySelector('.plantarse');
 const perdirCarta = document.querySelector('.carta');
 const mesa = document.querySelector('.card');
 const youWin = document.querySelector('.win');
+// const jb = document.querySelector('.jb');
+
 
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //, '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'
+let numbers = ['A', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9', '10', 
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
@@ -50,8 +52,6 @@ let conterUser = 2;
 let conterBoot = 2;
 
 
-
-
 function inicarJuego() {
 
     cartas = [];
@@ -81,6 +81,7 @@ function inicarJuego() {
     play.disabled = true;
     perdirCarta.disabled = false;
     plantarse.disabled = false;
+
 }
 
 function repartirCarta() {
@@ -311,6 +312,7 @@ function turnoUser() {
                 contadorUser += 10;
                 break;
         };
+
         text__count.style.visibility = 'visible';
         //imprimimos los valores de la carta en el DOM
 
@@ -321,9 +323,12 @@ function turnoUser() {
         text__count.textContent = contadorUser;
         ases();
         count();
+
+    }
+    if (cartasUser.length === 2) {
+        blackJack();
     }
     conterUser = 1;
-
 };
 
 
@@ -338,18 +343,20 @@ function turnoBoot() {
         repartirCarta(carta);
         cartasBoot.push(carta);
         crearCarta();
-        quienGana();
-    } else if (contadorUser <= 21) {
+
+    } else if (contadorUser < 21) {
         do {
             repartirCarta(carta);
             cartasBoot.push(carta);
             crearCarta();
-        } while (contadorBoot < contadorUser && contadorBoot < 21);
-        quienGana();
-    } else {
-        return;
-    }
+        } while (contadorBoot < contadorUser && contadorBoot <= 21);
 
+    } else if (contadorUser === 21) {
+        repartirCarta(carta);
+        cartasBoot.push(carta);
+        crearCarta();
+    }
+    quienGana();
     ases();
 };
 
@@ -567,24 +574,32 @@ function count() {
 //'♥', '♣', '♦', '♠'
 function ases() {
 
-    let asesU = cartasUser.some(() => carta.includes('A'));
+    // cartasUser.forEach(assss => {
+    //     let asesU = assss.includes('A');
+    //     if (asesU) {
+    //         console.log(cartasUser);
+    //     }
+    // });
 
-    if (asesU && contadorUser > 21) {
-        contadorUser -= 10;
-        text__count.textContent = contadorUser;
-    }
 
-    let asesB = cartasBoot.some(() => carta.includes('A'));
 
-    if (asesB && contadorBoot > 21) {
-        contadorBoot -= 10;
-        countBoot.textContent = contadorBoot;
-        console.log(contadorBoot);
-    }
+    // if (asesU && contadorUser > 21) {
+    //     contadorUser -= 10;
+    //     text__count.textContent = contadorUser;
+    // }
+
+    // let asesB = cartasBoot.some(() => carta.includes('A'));
+
+    // if (asesB && contadorBoot > 21) {
+    //     contadorBoot -= 10;
+    //     countBoot.textContent = contadorBoot;
+    //     console.log(contadorBoot);
+    // }
 
 }
 
 function quienGana() {
+
     if (contadorUser > contadorBoot && contadorUser <= 21) {
         console.log('Ganaste!');
         youWin.style.visibility = 'visible';
@@ -606,6 +621,7 @@ function quienGana() {
         play.disabled = false;
         perdirCarta.disabled = true;
         plantarse.disabled = true;
+        blackJack();
     } else if (contadorUser > 21 && contadorBoot <= 21) {
         console.log('Perdiste!');
         youWin.style.visibility = 'visible';
@@ -620,5 +636,59 @@ function quienGana() {
         play.disabled = false;
         perdirCarta.disabled = true;
         plantarse.disabled = true;
+
     }
+    // blackJack();
+};
+
+function blackJack() {
+
+    cartasBoot.forEach(As => {
+        let existeAS = As.includes('A');
+        if (existeAS && contadorBoot === 21) {
+            const jb = document.createElement('span');
+            jb.classList.add('jb');
+            continerBoot.appendChild(jb);
+            youWin.style.visibility = 'visible';
+            play.disabled = false;
+            perdirCarta.disabled = true;
+            plantarse.disabled = true;
+            youWin.style.visibility = 'visible';
+            youWin.textContent = 'PERDISTE';
+        }
+    });
+
+    cartasUser.forEach(As => {
+        let existeAS = As.includes('A');
+        if (existeAS && contadorUser === 21) {
+            console.log('Black Jack');
+            const jb = document.createElement('span');
+            jb.classList.add('jb');
+            container.appendChild(jb);
+            youWin.style.visibility = 'visible';
+            youWin.textContent = 'GANASTE';
+            play.disabled = false;
+            perdirCarta.disabled = true;
+            plantarse.disabled = true;
+            turnoBoot();
+
+            cartasBoot.forEach(As => {
+                let existeAS = As.includes('A');
+                if (existeAS && contadorBoot === 21) {
+                    const jb = document.createElement('span');
+                    jb.classList.add('jb');
+                    continerBoot.appendChild(jb);
+                    play.disabled = false;
+                    perdirCarta.disabled = true;
+                    plantarse.disabled = true;
+                    youWin.style.visibility = 'visible';
+                    youWin.textContent = 'EMPATE';
+                }
+            });
+
+        }
+    });
+
+
+
 }
