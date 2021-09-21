@@ -21,9 +21,6 @@ body {
     position: relative;
 }
 
-/* .blackjack{
-    height: 100vh;
-} */
 
 .container {
     width: 100%;
@@ -388,6 +385,22 @@ span {
     z-index: 3;
     visibility: hidden;
 }
+.mymoney{
+    position: absolute;
+    top: 15px;
+    color: hsl(0, 0%, 100%);
+    background: rgba(0, 0, 0, 0.486);
+    padding: 12px 40px;
+    font-size: 1rem;
+    border-radius: 30px;
+    border: solid 1px hsl(0, 0%, 100%);
+}
+.fichas{
+    width:200px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
 
 /*RESPONSIVE*/
 
@@ -400,11 +413,12 @@ span {
 @media(max-width: 850px) {
 
     .container {
-        height: 185px;
+        height: 147px;
     }
 
     .continerBoot {
-        height: 185px;
+        height: 147px;
+        margin-bottom: 15px;
     }
 
     .card {
@@ -433,7 +447,11 @@ span {
         top: 10px;
         left: 40px;
     }
-
+    .fichas{
+        width:80px;
+        top: 40px;
+        right: 15px;
+    }
     .up__simbol {
         margin: -5px;
         font-size: 0.8rem;

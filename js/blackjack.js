@@ -13,11 +13,11 @@ const youWin = document.querySelector('.win');
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
 let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //, '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'
-
 let cartas = [];
-
 let cartasUser = [];
 let cartasBoot = [];
+
+let money = 1000;
 
 let contadorUser = 0;
 let contadorBoot = 0;
