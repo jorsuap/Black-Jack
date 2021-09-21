@@ -23,6 +23,9 @@ let contadorUser = 0;
 let contadorBoot = 0;
 
 let cartaTapada;
+play.disabled = false;
+perdirCarta.disabled = false;
+plantarse.disabled = false;
 
 perdirCarta.addEventListener('click', turnoUser);
 
@@ -31,7 +34,13 @@ play.addEventListener('click', () => {
     turnoUser();
 });
 
-plantarse.addEventListener('click', turnoBoot);
+plantarse.addEventListener('click', () => {
+    turnoBoot();
+    play.disabled = false;
+    perdirCarta.disabled = true;
+    plantarse.disabled = true;
+
+});
 
 let singleCard;
 let singleNumber;
@@ -44,7 +53,7 @@ let conterBoot = 2;
 
 
 function inicarJuego() {
-    
+
     cartas = [];
     cartasUser = [];
     cartasBoot = [];
@@ -60,7 +69,7 @@ function inicarJuego() {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     };
-    
+
     repartirCarta(carta);
     cartasBoot.push(carta);
     crearCarta();
@@ -69,7 +78,9 @@ function inicarJuego() {
     cartaTapada = document.createElement('div');
     cartaTapada.classList.add('cartatapada');
     continerBoot.appendChild(cartaTapada);
-    
+    play.disabled = true;
+    perdirCarta.disabled = false;
+    plantarse.disabled = false;
 }
 
 function repartirCarta() {
@@ -324,10 +335,10 @@ function turnoBoot() {
     cartaTapada.classList.remove('cartatapada');
 
     if (contadorUser > 21) {
-            repartirCarta(carta);
-            cartasBoot.push(carta);
-            crearCarta();   
-            quienGana();
+        repartirCarta(carta);
+        cartasBoot.push(carta);
+        crearCarta();
+        quienGana();
     } else if (contadorUser <= 21) {
         do {
             repartirCarta(carta);
@@ -339,7 +350,7 @@ function turnoBoot() {
         return;
     }
 
-    
+    ases();
 };
 
 function crearCarta() {
@@ -568,30 +579,46 @@ function ases() {
     if (asesB && contadorBoot > 21) {
         contadorBoot -= 10;
         countBoot.textContent = contadorBoot;
+        console.log(contadorBoot);
     }
 
 }
 
-function quienGana(){
+function quienGana() {
     if (contadorUser > contadorBoot && contadorUser <= 21) {
         console.log('Ganaste!');
         youWin.style.visibility = 'visible';
         youWin.textContent = 'GANASTE';
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
     } else if (contadorUser <= 21 && contadorBoot > 21) {
         console.log('Ganaste!');
         youWin.style.visibility = 'visible';
         youWin.textContent = 'GANASTE';
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
     } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
         console.log('Perdiste!');
         youWin.style.visibility = 'visible';
         youWin.textContent = 'PERDISTE';
-    }else if (contadorUser > 21 && contadorBoot <= 21) {
-        console.log('Perdiste!'); 
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
+    } else if (contadorUser > 21 && contadorBoot <= 21) {
+        console.log('Perdiste!');
         youWin.style.visibility = 'visible';
         youWin.textContent = 'PERDISTE';
-    }else if (contadorUser === contadorBoot && contadorUser <= 21) {
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
+    } else if (contadorUser === contadorBoot && contadorUser <= 21) {
         console.log('Empate');
         youWin.style.visibility = 'visible';
-        youWin.textContent = 'PERDISTE';
+        youWin.textContent = 'EMPATE';
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
     }
 }

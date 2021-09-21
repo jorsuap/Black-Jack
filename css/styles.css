@@ -372,8 +372,9 @@ span {
     visibility: hidden;
     text-align: center;
 }
+
 .win,
-.loss{
+.loss {
     width: 100%;
     height: 200px;
     background: hsla(0, 0%, 0%, 0.315);
@@ -387,6 +388,7 @@ span {
     z-index: 3;
     visibility: hidden;
 }
+
 /*RESPONSIVE*/
 
 @media(max-width: 1024px) {
