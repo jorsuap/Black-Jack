@@ -8,6 +8,7 @@ const countBoot = document.querySelector('.text__count-boot');
 const plantarse = document.querySelector('.plantarse');
 const perdirCarta = document.querySelector('.carta');
 const mesa = document.querySelector('.card');
+const youWin = document.querySelector('.win');
 
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
@@ -51,7 +52,7 @@ function inicarJuego() {
     contadorBoot = 0;
     conterUser = 2;
     conterBoot = 2;
-    
+    youWin.style.visibility = 'hidden';
     while (continerBoot.firstChild) {
         continerBoot.removeChild(continerBoot.firstChild);
     };
@@ -574,13 +575,23 @@ function ases() {
 function quienGana(){
     if (contadorUser > contadorBoot && contadorUser <= 21) {
         console.log('Ganaste!');
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'GANASTE';
     } else if (contadorUser <= 21 && contadorBoot > 21) {
         console.log('Ganaste!');
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'GANASTE';
     } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
-        console.log('Perdiste!')
+        console.log('Perdiste!');
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'PERDISTE';
     }else if (contadorUser > 21 && contadorBoot <= 21) {
         console.log('Perdiste!'); 
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'PERDISTE';
     }else if (contadorUser === contadorBoot && contadorUser <= 21) {
         console.log('Empate');
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'PERDISTE';
     }
 }
