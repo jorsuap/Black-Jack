@@ -43,7 +43,7 @@ let conterBoot = 2;
 
 
 function inicarJuego() {
-
+    
     cartas = [];
     cartasUser = [];
     cartasBoot = [];
@@ -51,7 +51,7 @@ function inicarJuego() {
     contadorBoot = 0;
     conterUser = 2;
     conterBoot = 2;
-
+    
     while (continerBoot.firstChild) {
         continerBoot.removeChild(continerBoot.firstChild);
     };
@@ -59,7 +59,7 @@ function inicarJuego() {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     };
-
+    
     repartirCarta(carta);
     cartasBoot.push(carta);
     crearCarta();
@@ -68,7 +68,7 @@ function inicarJuego() {
     cartaTapada = document.createElement('div');
     cartaTapada.classList.add('cartatapada');
     continerBoot.appendChild(cartaTapada);
-
+    
 }
 
 function repartirCarta() {
@@ -322,16 +322,23 @@ function turnoBoot() {
 
     cartaTapada.classList.remove('cartatapada');
 
-    if (contadorUser <= 21) {
+    if (contadorUser > 21) {
+            repartirCarta(carta);
+            cartasBoot.push(carta);
+            crearCarta();   
+            quienGana();
+    } else if (contadorUser <= 21) {
         do {
             repartirCarta(carta);
             cartasBoot.push(carta);
             crearCarta();
-        } while (contadorBoot < contadorUser && contadorBoot < 21)
+        } while (contadorBoot < contadorUser && contadorBoot < 21);
+        quienGana();
     } else {
         return;
     }
-    quienGana();
+
+    
 };
 
 function crearCarta() {
@@ -564,16 +571,16 @@ function ases() {
 
 }
 
-function quienGana() {
+function quienGana(){
     if (contadorUser > contadorBoot && contadorUser <= 21) {
         console.log('Ganaste!');
     } else if (contadorUser <= 21 && contadorBoot > 21) {
         console.log('Ganaste!');
     } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
         console.log('Perdiste!')
-    } else if (contadorUser === contadorBoot && contadorUser <= 21) {
+    }else if (contadorUser > 21 && contadorBoot <= 21) {
+        console.log('Perdiste!'); 
+    }else if (contadorUser === contadorBoot && contadorUser <= 21) {
         console.log('Empate');
     }
-    console.log(contadorBoot);
-    console.log(contadorUser);
 }

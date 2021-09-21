@@ -363,7 +363,6 @@ span{
     }
     .continerBoot{
         height: 200px;
-        margin-top: 20px;
     }
     .card {
         width: 107px;
@@ -380,6 +379,8 @@ span{
         right: 28px;
     }
     .baraja {
+        width: 72px;
+        height: 110px;
         background: url(../imagenes/back.jpg.png)no-repeat;
         background-size: cover;
         position: absolute;
