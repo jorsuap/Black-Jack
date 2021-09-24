@@ -9,18 +9,16 @@ const plantarse = document.querySelector('.plantarse');
 const perdirCarta = document.querySelector('.carta');
 const mesa = document.querySelector('.card');
 const youWin = document.querySelector('.win');
-// const jb = document.querySelector('.jb');
 
 
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A','2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9', '10', 
+let numbers = ['A','2','10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
-
+let AsesUSer = [];
 let money = 1000;
-
 let contadorUser = 0;
 let contadorBoot = 0;
 
@@ -41,7 +39,6 @@ plantarse.addEventListener('click', () => {
     play.disabled = false;
     perdirCarta.disabled = true;
     plantarse.disabled = true;
-
 });
 
 let singleCard;
@@ -51,12 +48,12 @@ let existe;
 let conterUser = 2;
 let conterBoot = 2;
 
-
 function inicarJuego() {
 
     cartas = [];
     cartasUser = [];
     cartasBoot = [];
+    AsesUSer = [];
     contadorUser = 0;
     contadorBoot = 0;
     conterUser = 2;
@@ -81,22 +78,18 @@ function inicarJuego() {
     play.disabled = true;
     perdirCarta.disabled = false;
     plantarse.disabled = false;
-
 }
 
 function repartirCarta() {
     //metodo random para las cartas y la pinta
 
-
     singleCard = cards[Math.floor(Math.random() * cards.length)];
     singleNumber = numbers[Math.floor(Math.random() * numbers.length)];
 
     carta = singleNumber + singleCard;
-
     existe = cartas.some(() => cartas.includes(carta));
 
     //Estructura para comprobar que no se repitan cartas
-
     if (existe) {
         do {
             singleCard = cards[Math.floor(Math.random() * cards.length)];
@@ -109,7 +102,6 @@ function repartirCarta() {
         cartas.push(carta);
     }
     return carta;
-
 }
 
 //Funcion para crear cartas aleatorias
@@ -175,7 +167,6 @@ function turnoUser() {
             up.classList.add('cardsblack');
             down.classList.add('cardsblack');
             cuadrado.classList.add('black');
-
         }
 
         //Damos estilos y cantidad de pintas por carta...
@@ -315,25 +306,22 @@ function turnoUser() {
 
         text__count.style.visibility = 'visible';
         //imprimimos los valores de la carta en el DOM
-
         upNumber.innerHTML = `${singleNumber}`;
         upSimbol.innerHTML = `${singleCard}`;
         downNumber.innerHTML = `${singleNumber}`;
         downSimbol.innerHTML = `${singleCard}`;
         text__count.textContent = contadorUser;
-        ases();
-        count();
-
     }
     if (cartasUser.length === 2) {
         blackJack();
     }
+    ases();
+    count();
     conterUser = 1;
 };
 
 
 ///-----------------Funcion para darle cartas al Boot-----------------------------------
-
 
 function turnoBoot() {
 
@@ -344,20 +332,19 @@ function turnoBoot() {
         cartasBoot.push(carta);
         crearCarta();
 
-    } else if (contadorUser <= 21) {
-        do {
+    } else if (contadorUser < 21) {
+        while (contadorBoot < contadorUser && contadorBoot < 21) {
             repartirCarta(carta);
             cartasBoot.push(carta);
             crearCarta();
-        } while (contadorBoot < contadorUser && contadorBoot < 21);
-
+        };
     } else if (contadorUser === 21) {
         repartirCarta(carta);
         cartasBoot.push(carta);
         crearCarta();
     }
-    quienGana();
     ases();
+    quienGana();
 };
 
 function crearCarta() {
@@ -407,7 +394,6 @@ function crearCarta() {
         cuadrado.classList.add('red');
 
     } else {
-
         up.classList.remove('cardsred');
         down.classList.remove('cardsred');
         cuadrado.classList.remove('red');
@@ -415,7 +401,6 @@ function crearCarta() {
         up.classList.add('cardsblack');
         down.classList.add('cardsblack');
         cuadrado.classList.add('black');
-
     }
 
     //Damos estilos y cantidad de pintas por carta...
@@ -552,6 +537,7 @@ function crearCarta() {
             contadorBoot += 10;
             break;
     };
+    ases();
     countBoot.style.visibility = 'visible';
     //imprimimos los valores de la carta en el DOM
 
@@ -560,9 +546,7 @@ function crearCarta() {
     downNumber.innerHTML = `${singleNumber}`;
     downSimbol.innerHTML = `${singleCard}`;
     countBoot.textContent = contadorBoot;
-
 }
-
 
 
 function count() {
@@ -574,27 +558,33 @@ function count() {
 //'♥', '♣', '♦', '♠'
 function ases() {
 
-    // cartasUser.forEach(assss => {
-    //     let asesU = assss.includes('A');
-    //     if (asesU) {
-    //         console.log(cartasUser);
-    //     }
-    // });
+    cartasUser.forEach(barajaUser => {
+        let asesU = barajaUser.includes('A');
 
+        if (asesU && contadorUser > 21) {//
+            console.log(asesU);
+            let unAs = barajaUser;
+            console.log(unAs);
+            contadorUser -= 10;
+            text__count.textContent = contadorUser;
+            cartasUser = cartasUser.filter(cartaU => cartaU != unAs);
+            console.log(cartasUser);
+        }
+    });
 
+    cartasBoot.forEach(barajaBoot => {
+        let asesB = barajaBoot.includes('A');
 
-    // if (asesU && contadorUser > 21) {
-    //     contadorUser -= 10;
-    //     text__count.textContent = contadorUser;
-    // }
+        if (asesB && contadorBoot > 21) {//
+            console.log(asesB);
+            let unAs = barajaBoot;
+            console.log(unAs);
+            contadorBoot -= 10;
+            countBoot.textContent = contadorBoot;
+            cartasBoot = cartasBoot.filter(cartaB => cartaB != unAs);
 
-    // let asesB = cartasBoot.some(() => carta.includes('A'));
-
-    // if (asesB && contadorBoot > 21) {
-    //     contadorBoot -= 10;
-    //     countBoot.textContent = contadorBoot;
-    //     console.log(contadorBoot);
-    // }
+        }
+    });
 
 }
 
@@ -636,9 +626,7 @@ function quienGana() {
         play.disabled = false;
         perdirCarta.disabled = true;
         plantarse.disabled = true;
-
     }
-    // blackJack();
 };
 
 function blackJack() {
@@ -688,7 +676,4 @@ function blackJack() {
 
         }
     });
-
-
-
 }

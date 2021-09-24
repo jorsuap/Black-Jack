@@ -189,7 +189,7 @@ span {
     align-items: flex-start;
     flex-direction: row;
     z-index: -1;
-    margin: -20px;
+    margin: 5px;
     background: url(../imagenes/back.jpg.png)no-repeat;
     background-size: cover;
 }
@@ -438,6 +438,7 @@ span {
     .cartatapada {
         width: 95px;
         height: 147px;
+        margin: -20px;
     }
 
     .cuadrado {
