@@ -3,41 +3,131 @@
 const container = document.querySelector('.container');
 const continerBoot = document.querySelector('.continerBoot');
 const play = document.querySelector('#play');
+const replay = document.querySelector('.replay');
 const text__count = document.querySelector('.text__count');
 const countBoot = document.querySelector('.text__count-boot');
 const plantarse = document.querySelector('.plantarse');
 const perdirCarta = document.querySelector('.carta');
 const mesa = document.querySelector('.card');
 const youWin = document.querySelector('.win');
+const panelApuesta = document.querySelector('.apuesta');
 const mymoney = document.querySelector('.mymoney');
+const venticinco = document.querySelector('.veinticinco');
+const cincuenta = document.querySelector('.cincuenta');
+const cien = document.querySelector('.cien');
+const totalApuesta = document.querySelector('.total_apuesta');
+const restaurarCapital = document.querySelector('.restaurarCapital');
 
-//mymoney.textContent = money;
 
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A','2','3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
+let numbers = ['A', '10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
 let AsesUSer = [];
 let money = 1000;
-let apuesta;
+let apuesta = 0;
 let contadorUser = 0;
 let contadorBoot = 0;
 
 let cartaTapada;
 play.disabled = false;
-perdirCarta.disabled = false;
-plantarse.disabled = false;
+perdirCarta.disabled = true;
+plantarse.disabled = true;
+
+mymoney.textContent = money;
+replay.classList.add('hiden');
+
+restaurarCapital.addEventListener('click', ()=>{
+    money = 1000;
+    mymoney.textContent = money;
+    restaurarCapital.style.visibility = 'hidden';
+});
+replay.addEventListener('click', () => {
+
+    totalApuesta.textContent = apuesta;
+    panelApuesta.classList.remove('hiden');
+    text__count.style.visibility = 'hidden';
+    countBoot.style.visibility = 'hidden';
+
+    apuesta = 0;
+    totalApuesta.textContent = apuesta;
+    youWin.style.visibility = 'hidden';
+    while (continerBoot.firstChild) {
+        continerBoot.removeChild(continerBoot.firstChild);
+    };
+
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    };
+
+    replay.classList.add('hiden');
+    play.classList.remove('hiden');
+});
+
+venticinco.addEventListener('click', () => {
+    if(money>apuesta) {
+        console.log('Click en 25');
+        let apuesta25 = 25;
+        apuesta += apuesta25;
+        console.log(apuesta);
+        money -= apuesta25;
+        mymoney.textContent = money;
+        totalApuesta.textContent = apuesta;
+
+    }else{
+        restaurarCapital.style.visibility = 'visible';
+    }
+
+});
+
+cincuenta.addEventListener('click', () => {
+    if(money>apuesta) {
+    console.log('Click en 50');
+    let apuesta50 = 50;
+    apuesta += apuesta50;
+    console.log(apuesta);
+    money -= apuesta50;
+    mymoney.textContent = money;
+    totalApuesta.textContent = apuesta;
+  
+    }else{
+        restaurarCapital.style.visibility = 'visible';
+    }
+});
+cien.addEventListener('click', () => {
+    if(money>apuesta) {
+    console.log('Click en 100');
+    let apuesta100 = 100;
+    apuesta += apuesta100;
+    console.log(apuesta);
+    money -= apuesta100;
+    mymoney.textContent = money;
+    totalApuesta.textContent = apuesta;
+  
+    }else{
+        restaurarCapital.style.visibility = 'visible';
+    }
+});
 
 perdirCarta.addEventListener('click', turnoUser);
 
 play.addEventListener('click', () => {
-    inicarJuego();
-    turnoUser();
+    if (apuesta === 0) {
+        preventDefault();
+        panelApuesta.classList.remove('hiden');
+    } else {
+        panelApuesta.classList.add('hiden');
+        inicarJuego();
+        turnoUser();
+    }
+
 });
 
 plantarse.addEventListener('click', () => {
+    play.classList.add('hiden');
+    replay.classList.remove('hiden');
     turnoBoot();
     play.disabled = false;
     perdirCarta.disabled = true;
@@ -342,9 +432,24 @@ function turnoBoot() {
             crearCarta();
         };
     } else if (contadorUser === 21) {
-        repartirCarta(carta);
-        cartasBoot.push(carta);
-        crearCarta();
+
+        cartasUser.forEach(barajaUser => {
+            let asesU = barajaUser.includes('A');
+            console.log(asesU);
+            if (asesU && cartasUser.length === 2) {
+                console.log('entro al IF');
+                repartirCarta(carta);
+                cartasBoot.push(carta);
+                crearCarta();
+            } else if (cartasUser.length > 2) {
+                while (contadorBoot < contadorUser && contadorBoot <= 21) {
+                    console.log('entro al ELSE');
+                    repartirCarta(carta);
+                    cartasBoot.push(carta);
+                    crearCarta();
+                };
+            }
+        });
     }
     ases();
     quienGana();
@@ -564,24 +669,21 @@ function ases() {
     cartasUser.forEach(barajaUser => {
         let asesU = barajaUser.includes('A');
 
-        if (asesU && contadorUser > 21) {//
-            console.log(asesU);
+        if (asesU && contadorUser > 21) { //
+
             let unAs = barajaUser;
-            console.log(unAs);
             contadorUser -= 10;
             text__count.textContent = contadorUser;
             cartasUser = cartasUser.filter(cartaU => cartaU != unAs);
-            console.log(cartasUser);
         }
     });
 
     cartasBoot.forEach(barajaBoot => {
         let asesB = barajaBoot.includes('A');
 
-        if (asesB && contadorBoot > 21) {//
-            console.log(asesB);
+        if (asesB && contadorBoot > 21) { //
+
             let unAs = barajaBoot;
-            console.log(unAs);
             contadorBoot -= 10;
             countBoot.textContent = contadorBoot;
             cartasBoot = cartasBoot.filter(cartaB => cartaB != unAs);
@@ -594,21 +696,27 @@ function ases() {
 function quienGana() {
 
     if (contadorUser > contadorBoot && contadorUser <= 21) {
-        console.log('Ganaste!');
+
         youWin.style.visibility = 'visible';
         youWin.textContent = 'GANASTE';
         play.disabled = false;
         perdirCarta.disabled = true;
         plantarse.disabled = true;
+        money += apuesta * 2;
+        mymoney.textContent = money;
+
     } else if (contadorUser <= 21 && contadorBoot > 21) {
-        console.log('Ganaste!');
+
         youWin.style.visibility = 'visible';
         youWin.textContent = 'GANASTE';
         play.disabled = false;
         perdirCarta.disabled = true;
         plantarse.disabled = true;
+        money += apuesta * 2;
+        mymoney.textContent = money;
+
     } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
-        console.log('Perdiste!');
+
         youWin.style.visibility = 'visible';
         youWin.textContent = 'PERDISTE';
         play.disabled = false;
@@ -616,20 +724,28 @@ function quienGana() {
         plantarse.disabled = true;
         blackJack();
     } else if (contadorUser > 21 && contadorBoot <= 21) {
-        console.log('Perdiste!');
+
         youWin.style.visibility = 'visible';
         youWin.textContent = 'PERDISTE';
         play.disabled = false;
         perdirCarta.disabled = true;
         plantarse.disabled = true;
+        mymoney.textContent = money;
+        replay.classList.remove('hiden');
+        play.classList.add('hiden');
+
     } else if (contadorUser === contadorBoot && contadorUser <= 21) {
-        console.log('Empate');
+
         youWin.style.visibility = 'visible';
         youWin.textContent = 'EMPATE';
         play.disabled = false;
         perdirCarta.disabled = true;
         plantarse.disabled = true;
+        money += apuesta;
+        mymoney.textContent = money;
+
     }
+    replay.classList.remove('hiden');
 };
 
 function blackJack() {
@@ -661,6 +777,9 @@ function blackJack() {
             play.disabled = false;
             perdirCarta.disabled = true;
             plantarse.disabled = true;
+            mymoney.textContent = money;
+            replay.classList.remove('hiden');
+            play.classList.add('hiden');
             turnoBoot();
 
             cartasBoot.forEach(As => {
@@ -674,8 +793,22 @@ function blackJack() {
                     plantarse.disabled = true;
                     youWin.style.visibility = 'visible';
                     youWin.textContent = 'EMPATE';
+                    money -= apuesta;
+                    mymoney.textContent = money;
                 }
             });
         }
     });
+}
+
+
+function recargarPlante(){
+    if(money<=apuesta && money > 0){
+        console.log('Sin Saldo');
+        apuesta = money;
+        money = 0;
+        mymoney.textContent = money;
+        totalApuesta.textContent = apuesta;
+
+    }
 }

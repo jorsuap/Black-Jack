@@ -43,13 +43,22 @@ body {
 }
 
 
-.play {
+.replay, .play {
     width: 120px;
     height: 30px;
     color: hsl(0, 0%, 100%);
     outline: none;
     margin: 5px;
     background-color: hsl(120, 100%, 25%);
+}
+.restaurarCapital{
+    width: 150px;
+    height: 30px;
+    color: hsl(0, 0%, 100%);
+    outline: none;
+    margin: 5px;
+    background-color: hsl(266, 61%, 30%);
+    visibility: hidden;
 }
 
 .carta {
@@ -386,6 +395,60 @@ span {
     z-index: 3;
     visibility: hidden;
 }
+.restaurarcapital{
+    width: 100%;
+    height: 200px;
+    background: hsla(0, 0%, 0%, 0.315);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 2rem;
+    z-index: 3;
+    /* visibility: hidden; */
+}
+.apuesta{
+    width: 100%;
+    height: 200px;
+    background: hsla(0, 0%, 0%, 0.315);
+    position: absolute;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.5rem;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.valorapuesta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+    width: 50px;
+    margin: 15px;
+}
+.valorapuesta img{
+    width: 50px;
+}
+.total_apuesta{
+    height: 40px;
+    width: 100px;
+    color: hsl(0, 0%, 100%);
+    background: rgba(0, 0, 0, 0.486);
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 30px;
+    border: solid 1px hsl(0, 0%, 100%);
+    text-align: center;
+}
+.hiden{
+    display: none;
+} 
 .mymoney{
     position: absolute;
     top: 15px;
@@ -540,6 +603,7 @@ span {
         margin-top: 47px;
     }
 
+    .replay,
     .play,
     .carta,
     .plantarse {
