@@ -11,7 +11,7 @@ const mesa = document.querySelector('.card');
 const youWin = document.querySelector('.win');
 const mymoney = document.querySelector('.mymoney');
 
-mymoney.textContent = money;
+//mymoney.textContent = money;
 
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
