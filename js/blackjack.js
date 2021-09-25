@@ -9,16 +9,19 @@ const plantarse = document.querySelector('.plantarse');
 const perdirCarta = document.querySelector('.carta');
 const mesa = document.querySelector('.card');
 const youWin = document.querySelector('.win');
+const mymoney = document.querySelector('.mymoney');
 
+mymoney.textContent = money;
 
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A','2','10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
+let numbers = ['A','2','3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
 let AsesUSer = [];
 let money = 1000;
+let apuesta;
 let contadorUser = 0;
 let contadorBoot = 0;
 
@@ -673,7 +676,6 @@ function blackJack() {
                     youWin.textContent = 'EMPATE';
                 }
             });
-
         }
     });
 }
