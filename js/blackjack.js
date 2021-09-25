@@ -21,7 +21,7 @@ const restaurarCapital = document.querySelector('.restaurarCapital');
 
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', '10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
+let numbers = ['A','2','3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
