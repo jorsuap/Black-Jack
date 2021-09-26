@@ -39,11 +39,7 @@ plantarse.disabled = true;
 mymoney.textContent = money;
 replay.classList.add('hiden');
 
-restaurarCapital.addEventListener('click', ()=>{
-    money = 1000;
-    mymoney.textContent = money;
-    restaurarCapital.style.visibility = 'hidden';
-});
+
 replay.addEventListener('click', () => {
 
     recargarPlante();
@@ -71,7 +67,7 @@ replay.addEventListener('click', () => {
 });
 
 venticinco.addEventListener('click', () => {
-    if(money>apuesta) {
+    if(money>0) {
         console.log('Click en 25');
         let apuesta25 = 25;
         apuesta += apuesta25;
@@ -83,7 +79,7 @@ venticinco.addEventListener('click', () => {
 });
 
 cincuenta.addEventListener('click', () => {
-    if(money>apuesta) {
+    if(money>0) {
     console.log('Click en 50');
     let apuesta50 = 50;
     apuesta += apuesta50;
@@ -94,7 +90,7 @@ cincuenta.addEventListener('click', () => {
     }
 });
 cien.addEventListener('click', () => {
-    if(money>apuesta) {
+    if(money>0) {
     console.log('Click en 100');
     let apuesta100 = 100;
     apuesta += apuesta100;
@@ -798,7 +794,11 @@ function blackJack() {
 
 function recargarPlante(){
     if(money === 0){
-        money = 1000;
-        mymoney.textContent = money;
+        restaurarCapital.style.visibility = 'visible';
+        restaurarCapital.addEventListener('click', ()=>{
+            money = 1000;
+            mymoney.textContent = money;
+            restaurarCapital.style.visibility = 'hidden';
+        });
     }
 }
