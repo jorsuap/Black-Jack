@@ -794,11 +794,11 @@ function blackJack() {
 
 function recargarPlante(){
     if(money === 0){
-        restaurarCapital.style.visibility = 'visible';
+        restaurarCapital.style.display = 'block';
         restaurarCapital.addEventListener('click', ()=>{
             money = 1000;
             mymoney.textContent = money;
-            restaurarCapital.style.visibility = 'hidden';
+            restaurarCapital.style.display = 'none';
         });
     }
 }

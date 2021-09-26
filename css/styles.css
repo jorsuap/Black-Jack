@@ -58,8 +58,7 @@ body {
     outline: none;
     margin: 5px;
     background-color: hsl(266, 61%, 30%);
-    visibility: hidden;
-    margin-bottom: 80px;
+    display: none;
 }
 
 .carta {
@@ -164,7 +163,7 @@ span {
 .botones {
     position: absolute;
     left: 50%;
-    top: 90%;
+    top: 95%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     display: flex;
@@ -471,9 +470,6 @@ span {
 }
 
 @media(max-width: 850px) {
-    body {
-        height: 95vh;
-    }
 
     .container {
         height: 147px;
