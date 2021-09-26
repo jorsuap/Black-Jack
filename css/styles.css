@@ -58,6 +58,7 @@ body {
     margin: 5px;
     background-color: hsl(266, 61%, 30%);
     display: none;
+    margin-bottom: 90px;
 }
 
 .carta {
@@ -162,7 +163,7 @@ span {
 .botones {
     position: absolute;
     left: 50%;
-    top: 85%;
+    top: 90%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     display: flex;
