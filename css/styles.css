@@ -474,6 +474,10 @@ span {
     .card {
         margin: 0 -25px;
     }
+    .baraja {
+        top: 20px;
+        left: 40px;
+    }
 }
 
 @media(max-width: 850px) {
