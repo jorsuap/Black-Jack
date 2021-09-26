@@ -64,6 +64,8 @@ replay.addEventListener('click', () => {
 
     replay.classList.add('hiden');
     play.classList.remove('hiden');
+
+
 });
 
 venticinco.addEventListener('click', () => {
@@ -803,12 +805,8 @@ function blackJack() {
 
 
 function recargarPlante(){
-    if(money<=apuesta && money > 0){
-        console.log('Sin Saldo');
-        apuesta = money;
-        money = 0;
+    if(money === 0){
+        money = 1000;
         mymoney.textContent = money;
-        totalApuesta.textContent = apuesta;
-
     }
 }
