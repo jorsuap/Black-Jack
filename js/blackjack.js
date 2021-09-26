@@ -46,6 +46,8 @@ restaurarCapital.addEventListener('click', ()=>{
 });
 replay.addEventListener('click', () => {
 
+    recargarPlante();
+
     totalApuesta.textContent = apuesta;
     panelApuesta.classList.remove('hiden');
     text__count.style.visibility = 'hidden';
@@ -77,11 +79,7 @@ venticinco.addEventListener('click', () => {
         money -= apuesta25;
         mymoney.textContent = money;
         totalApuesta.textContent = apuesta;
-
-    }else{
-        restaurarCapital.style.visibility = 'visible';
     }
-
 });
 
 cincuenta.addEventListener('click', () => {
@@ -93,9 +91,6 @@ cincuenta.addEventListener('click', () => {
     money -= apuesta50;
     mymoney.textContent = money;
     totalApuesta.textContent = apuesta;
-  
-    }else{
-        restaurarCapital.style.visibility = 'visible';
     }
 });
 cien.addEventListener('click', () => {
@@ -107,9 +102,6 @@ cien.addEventListener('click', () => {
     money -= apuesta100;
     mymoney.textContent = money;
     totalApuesta.textContent = apuesta;
-  
-    }else{
-        restaurarCapital.style.visibility = 'visible';
     }
 });
 
