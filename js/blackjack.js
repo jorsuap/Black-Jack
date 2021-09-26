@@ -18,10 +18,9 @@ const cien = document.querySelector('.cien');
 const totalApuesta = document.querySelector('.total_apuesta');
 const restaurarCapital = document.querySelector('.restaurarCapital');
 
-
 //Arreglos con las posibilidades de cartas
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A','2','3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
+let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
@@ -39,11 +38,9 @@ plantarse.disabled = true;
 mymoney.textContent = money;
 replay.classList.add('hiden');
 
-
 replay.addEventListener('click', () => {
 
     recargarPlante();
-
     totalApuesta.textContent = apuesta;
     panelApuesta.classList.remove('hiden');
     text__count.style.visibility = 'hidden';
@@ -59,19 +56,14 @@ replay.addEventListener('click', () => {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     };
-
     replay.classList.add('hiden');
     play.classList.remove('hiden');
-
-
 });
 
 venticinco.addEventListener('click', () => {
-    if(money>0) {
-        console.log('Click en 25');
+    if (money > 0) {
         let apuesta25 = 25;
         apuesta += apuesta25;
-        console.log(apuesta);
         money -= apuesta25;
         mymoney.textContent = money;
         totalApuesta.textContent = apuesta;
@@ -79,25 +71,21 @@ venticinco.addEventListener('click', () => {
 });
 
 cincuenta.addEventListener('click', () => {
-    if(money>0) {
-    console.log('Click en 50');
-    let apuesta50 = 50;
-    apuesta += apuesta50;
-    console.log(apuesta);
-    money -= apuesta50;
-    mymoney.textContent = money;
-    totalApuesta.textContent = apuesta;
+    if (money > 0) {
+        let apuesta50 = 50;
+        apuesta += apuesta50;
+        money -= apuesta50;
+        mymoney.textContent = money;
+        totalApuesta.textContent = apuesta;
     }
 });
 cien.addEventListener('click', () => {
-    if(money>0) {
-    console.log('Click en 100');
-    let apuesta100 = 100;
-    apuesta += apuesta100;
-    console.log(apuesta);
-    money -= apuesta100;
-    mymoney.textContent = money;
-    totalApuesta.textContent = apuesta;
+    if (money > 0) {
+        let apuesta100 = 100;
+        apuesta += apuesta100;
+        money -= apuesta100;
+        mymoney.textContent = money;
+        totalApuesta.textContent = apuesta;
     }
 });
 
@@ -112,7 +100,6 @@ play.addEventListener('click', () => {
         inicarJuego();
         turnoUser();
     }
-
 });
 
 plantarse.addEventListener('click', () => {
@@ -425,15 +412,12 @@ function turnoBoot() {
 
         cartasUser.forEach(barajaUser => {
             let asesU = barajaUser.includes('A');
-            console.log(asesU);
             if (asesU && cartasUser.length === 2) {
-                console.log('entro al IF');
                 repartirCarta(carta);
                 cartasBoot.push(carta);
                 crearCarta();
             } else if (cartasUser.length > 2) {
                 while (contadorBoot < contadorUser && contadorBoot <= 21) {
-                    console.log('entro al ELSE');
                     repartirCarta(carta);
                     cartasBoot.push(carta);
                     crearCarta();
@@ -646,13 +630,13 @@ function crearCarta() {
     countBoot.textContent = contadorBoot;
 }
 
-
 function count() {
     if (contadorUser > 21) {
         ases();
         turnoBoot();
     }
 };
+
 //'♥', '♣', '♦', '♠'
 function ases() {
 
@@ -677,7 +661,6 @@ function ases() {
             contadorBoot -= 10;
             countBoot.textContent = contadorBoot;
             cartasBoot = cartasBoot.filter(cartaB => cartaB != unAs);
-
         }
     });
 
@@ -733,7 +716,6 @@ function quienGana() {
         plantarse.disabled = true;
         money += apuesta;
         mymoney.textContent = money;
-
     }
     replay.classList.remove('hiden');
 };
@@ -758,7 +740,6 @@ function blackJack() {
     cartasUser.forEach(As => {
         let existeAS = As.includes('A');
         if (existeAS && contadorUser === 21) {
-            console.log('Black Jack');
             const jb = document.createElement('span');
             jb.classList.add('jb');
             container.appendChild(jb);
@@ -791,14 +772,13 @@ function blackJack() {
     });
 }
 
-
-function recargarPlante(){
-    if(money === 0){
+function recargarPlante() {
+    if (money === 0) {
         restaurarCapital.style.display = 'block';
-        restaurarCapital.addEventListener('click', ()=>{
+        restaurarCapital.addEventListener('click', () => {
             money = 1000;
             mymoney.textContent = money;
             restaurarCapital.style.display = 'none';
         });
     }
-}
+};

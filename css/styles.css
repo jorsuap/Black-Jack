@@ -5,7 +5,6 @@
     margin: 0;
     box-sizing: border-box;
     font-weight: bold;
-
 }
 
 body {
@@ -20,7 +19,6 @@ body {
     font-size: 16px;
     position: relative;
 }
-
 
 .container {
     width: 100%;
@@ -42,8 +40,8 @@ body {
     position: relative;
 }
 
-
-.replay, .play {
+.replay,
+.play {
     width: 120px;
     height: 30px;
     color: hsl(0, 0%, 100%);
@@ -51,7 +49,8 @@ body {
     margin: 5px;
     background-color: hsl(120, 100%, 25%);
 }
-.restaurarCapital{
+
+.restaurarCapital {
     width: 150px;
     height: 30px;
     color: hsl(0, 0%, 100%);
@@ -381,7 +380,7 @@ span {
     text-align: center;
 }
 
-.win{
+.win {
     width: 100%;
     height: 200px;
     background: hsla(0, 0%, 0%, 0.315);
@@ -396,7 +395,7 @@ span {
     visibility: hidden;
 }
 
-.apuesta{
+.apuesta {
     width: 100%;
     height: 200px;
     background: hsla(0, 0%, 0%, 0.315);
@@ -410,7 +409,8 @@ span {
     align-items: center;
     flex-direction: column;
 }
-.valorapuesta{
+
+.valorapuesta {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -419,10 +419,12 @@ span {
     width: 50px;
     margin: 15px;
 }
-.valorapuesta img{
+
+.valorapuesta img {
     width: 50px;
 }
-.total_apuesta{
+
+.total_apuesta {
     height: 40px;
     width: 100px;
     color: hsl(0, 0%, 100%);
@@ -433,10 +435,12 @@ span {
     border: solid 1px hsl(0, 0%, 100%);
     text-align: center;
 }
-.hiden{
+
+.hiden {
     display: none;
-} 
-.mymoney{
+}
+
+.mymoney {
     position: absolute;
     top: 15px;
     color: hsl(0, 0%, 100%);
@@ -446,21 +450,24 @@ span {
     border-radius: 30px;
     border: solid 1px hsl(0, 0%, 100%);
 }
-.fichas{
-    width:200px;
+
+.fichas {
+    width: 200px;
     position: absolute;
     top: 20px;
     right: 20px;
 }
-.jb{
+
+.jb {
     background: url(../imagenes/jb.png) no-repeat;
-    background-size: contain; 
+    background-size: contain;
     width: 120px;
     height: 120px;
     top: 60px;
-    position: absolute; 
+    position: absolute;
     z-index: 999;
 }
+
 /*RESPONSIVE*/
 
 @media(max-width: 1024px) {
@@ -470,7 +477,7 @@ span {
 }
 
 @media(max-width: 850px) {
-    body{
+    body {
         height: 95vh;
     }
 
@@ -510,16 +517,19 @@ span {
         top: 20px;
         left: 40px;
     }
-    .fichas{
-        width:80px;
+
+    .fichas {
+        width: 80px;
         top: 40px;
         right: 15px;
     }
-    .jb{
+
+    .jb {
         width: 80px;
         height: 80px;
         top: 35px;
     }
+
     .up__simbol {
         margin: -5px;
         font-size: 0.8rem;
