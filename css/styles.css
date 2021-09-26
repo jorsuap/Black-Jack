@@ -483,6 +483,9 @@ span {
 }
 
 @media(max-width: 850px) {
+    body {
+        height: 95vh;
+    }
 
     .container {
         height: 147px;
