@@ -480,7 +480,7 @@ span {
     }
 }
 
-@media(max-width: 850px) {
+@media(max-width: 1024px) {
     body {
         height: 95vh;
     }
@@ -613,5 +613,4 @@ span {
     .plantarse {
         width: 80px;
     }
-
 }
