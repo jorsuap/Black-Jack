@@ -764,7 +764,7 @@ function blackJack() {
                     plantarse.disabled = true;
                     youWin.style.visibility = 'visible';
                     youWin.textContent = 'EMPATE';
-                    money -= apuesta;
+                    money += apuesta;
                     mymoney.textContent = money;
                 }
             });
