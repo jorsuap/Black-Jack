@@ -61,7 +61,7 @@ replay.addEventListener('click', () => {
 });
 
 venticinco.addEventListener('click', () => {
-    if (money > 0) {
+    if (money >= 25) {
         let apuesta25 = 25;
         apuesta += apuesta25;
         money -= apuesta25;
@@ -71,7 +71,7 @@ venticinco.addEventListener('click', () => {
 });
 
 cincuenta.addEventListener('click', () => {
-    if (money > 0) {
+    if (money >= 50) {
         let apuesta50 = 50;
         apuesta += apuesta50;
         money -= apuesta50;
@@ -80,7 +80,7 @@ cincuenta.addEventListener('click', () => {
     }
 });
 cien.addEventListener('click', () => {
-    if (money > 0) {
+    if (money >= 100) {
         let apuesta100 = 100;
         apuesta += apuesta100;
         money -= apuesta100;
