@@ -20,6 +20,7 @@ body {
     position: relative;
 }
 
+/* estilos mesa user */
 .container {
     width: 100%;
     height: 250px;
@@ -30,6 +31,7 @@ body {
     position: relative;
 }
 
+/* estilos mesa boot */
 .continerBoot {
     width: 100%;
     height: 250px;
@@ -40,6 +42,7 @@ body {
     position: relative;
 }
 
+/* botones user */
 .replay,
 .play {
     width: 120px;
@@ -49,7 +52,22 @@ body {
     margin: 5px;
     background-color: hsl(120, 100%, 25%);
 }
-
+.plantarse {
+    width: 120px;
+    height: 30px;
+    color: hsl(0, 0%, 100%);
+    outline: none;
+    background-color: hsl(0, 80%, 50%);
+    margin: 5px;
+}
+.carta {
+    width: 120px;
+    height: 30px;
+    color: hsl(0, 0%, 100%);
+    outline: none;
+    margin: 5px;
+    background-color: hsl(120, 100%, 25%);
+}
 .restaurarCapital {
     width: 150px;
     height: 30px;
@@ -60,33 +78,7 @@ body {
     display: none;
     margin-bottom: 90px;
 }
-
-.carta {
-    width: 120px;
-    height: 30px;
-    color: hsl(0, 0%, 100%);
-    outline: none;
-    margin: 5px;
-    background-color: hsl(120, 100%, 25%);
-}
-
-.plantarse {
-    width: 120px;
-    height: 30px;
-    color: hsl(0, 0%, 100%);
-    outline: none;
-    background-color: hsl(0, 80%, 50%);
-    margin: 5px;
-}
-
-.cardsred {
-    color: red;
-}
-
-.cardsblack {
-    color: black;
-}
-
+/* diseño carta general */
 .card {
     width: 145px;
     height: 225px;
@@ -102,7 +94,7 @@ body {
     z-index: 2;
     margin: 5px;
 }
-
+/* centro de la carta */
 .cuadrado {
     width: 74px;
     height: 131px;
@@ -110,6 +102,13 @@ body {
     top: 47px;
     right: 35px;
     z-index: 1;
+}
+.cardsred {
+    color: red;
+}
+
+.cardsblack {
+    color: black;
 }
 
 span {

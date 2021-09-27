@@ -1,5 +1,6 @@
 "use strict";
 
+//Constantes para manipular el DOM
 const container = document.querySelector('.container');
 const continerBoot = document.querySelector('.continerBoot');
 const play = document.querySelector('#play');
@@ -18,48 +19,80 @@ const cien = document.querySelector('.cien');
 const totalApuesta = document.querySelector('.total_apuesta');
 const restaurarCapital = document.querySelector('.restaurarCapital');
 
-//Arreglos con las posibilidades de cartas
+//Declaracio e inicializacion de variables
+
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //'3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K'
+let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; 
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
-let AsesUSer = [];
 let money = 1000;
 let apuesta = 0;
 let contadorUser = 0;
 let contadorBoot = 0;
-
+let singleCard;
+let singleNumber;
+let carta;
+let existe;
+let conterUser = 2;
+let conterBoot = 2;
 let cartaTapada;
+
+mymoney.textContent = money;
+
+//se desabilitan los botones no necesarios
 play.disabled = false;
 perdirCarta.disabled = true;
 plantarse.disabled = true;
 
-mymoney.textContent = money;
-replay.classList.add('hiden');
+replay.classList.add('hiden');//esconder boton replay
 
-replay.addEventListener('click', () => {
+perdirCarta.addEventListener('click', turnoUser);//boton pedir carta llama funion turnoUser()
+
+play.addEventListener('click', () => {//boton comenzar a  jugar // llama funciones para repartir cartas
+    if (apuesta === 0) {
+        preventDefault();
+        panelApuesta.classList.remove('hiden');
+    } else {
+        panelApuesta.classList.add('hiden');
+        inicarJuego();// llama iniciar juego 
+        turnoUser();// llama turno usuario 
+    }
+});
+
+plantarse.addEventListener('click', () => {// boton plantarse cede turno al boot
+    play.classList.add('hiden');
+    replay.classList.remove('hiden');
+    turnoBoot();
+    play.disabled = false;
+    perdirCarta.disabled = true;
+    plantarse.disabled = true;
+});
+
+replay.addEventListener('click', () => {//repley permite junar una nueva ronda reinicialdo algunos valores
 
     recargarPlante();
+    
+    apuesta = 0;
     totalApuesta.textContent = apuesta;
+
     panelApuesta.classList.remove('hiden');
     text__count.style.visibility = 'hidden';
     countBoot.style.visibility = 'hidden';
-
-    apuesta = 0;
-    totalApuesta.textContent = apuesta;
     youWin.style.visibility = 'hidden';
-    while (continerBoot.firstChild) {
+
+    while (continerBoot.firstChild) {//borra las cartas de la mesa boot
         continerBoot.removeChild(continerBoot.firstChild);
     };
 
-    while (container.firstChild) {
+    while (container.firstChild) {//borra las cartas de la mesa user
         container.removeChild(container.firstChild);
     };
     replay.classList.add('hiden');
     play.classList.remove('hiden');
 });
 
+//valores posibles para apostar
 venticinco.addEventListener('click', () => {
     if (money >= 25) {
         let apuesta25 = 25;
@@ -89,46 +122,18 @@ cien.addEventListener('click', () => {
     }
 });
 
-perdirCarta.addEventListener('click', turnoUser);
-
-play.addEventListener('click', () => {
-    if (apuesta === 0) {
-        preventDefault();
-        panelApuesta.classList.remove('hiden');
-    } else {
-        panelApuesta.classList.add('hiden');
-        inicarJuego();
-        turnoUser();
-    }
-});
-
-plantarse.addEventListener('click', () => {
-    play.classList.add('hiden');
-    replay.classList.remove('hiden');
-    turnoBoot();
-    play.disabled = false;
-    perdirCarta.disabled = true;
-    plantarse.disabled = true;
-});
-
-let singleCard;
-let singleNumber;
-let carta;
-let existe;
-let conterUser = 2;
-let conterBoot = 2;
-
-function inicarJuego() {
+function inicarJuego() {//Inicia el juego, reinicia varibles, quitar cartas de la mano anterior
 
     cartas = [];
     cartasUser = [];
     cartasBoot = [];
-    AsesUSer = [];
     contadorUser = 0;
     contadorBoot = 0;
     conterUser = 2;
     conterBoot = 2;
+
     youWin.style.visibility = 'hidden';
+    
     while (continerBoot.firstChild) {
         continerBoot.removeChild(continerBoot.firstChild);
     };
@@ -137,11 +142,13 @@ function inicarJuego() {
         container.removeChild(container.firstChild);
     };
 
+    // reparte la primera carta del boot 
     repartirCarta(carta);
     cartasBoot.push(carta);
     crearCarta();
     conterBoot = 1;
 
+    // crea la carta tapada en el DOM
     cartaTapada = document.createElement('div');
     cartaTapada.classList.add('cartatapada');
     continerBoot.appendChild(cartaTapada);
@@ -151,7 +158,7 @@ function inicarJuego() {
 }
 
 function repartirCarta() {
-    //metodo random para las cartas y la pinta
+    //metodo random repartir cartas aleatorias
 
     singleCard = cards[Math.floor(Math.random() * cards.length)];
     singleNumber = numbers[Math.floor(Math.random() * numbers.length)];
@@ -174,8 +181,8 @@ function repartirCarta() {
     return carta;
 }
 
-//Funcion para crear cartas aleatorias
-function turnoUser() {
+
+function turnoUser() {// turno de usuario, inicialmente se ejecuta dos veces para dar dos cartas y en cada llamado posterior solo arroja una carta
 
     for (let i = 0; i < conterUser; i++) {
 
@@ -239,7 +246,7 @@ function turnoUser() {
             cuadrado.classList.add('black');
         }
 
-        //Damos estilos y cantidad de pintas por carta...
+        //Damos estilos y cantidad de pintas por carta y valor a cada carta
         switch (singleNumber) {
             case 'A':
                 cuadrado.classList.add('a')
@@ -260,7 +267,7 @@ function turnoUser() {
                 break;
             case '2':
                 parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
+                for (let i = 1; i <= singleNumber; i++) {// dependiente del valor de la carta se crea la cantidad de figuras
                     const span = document.createElement('span');
                     cuadrado.classList.add('dosytres');
                     span.innerHTML = `${singleCard}`;
@@ -375,6 +382,7 @@ function turnoUser() {
         };
 
         text__count.style.visibility = 'visible';
+
         //imprimimos los valores de la carta en el DOM
         upNumber.innerHTML = `${singleNumber}`;
         upSimbol.innerHTML = `${singleCard}`;
@@ -382,7 +390,7 @@ function turnoUser() {
         downSimbol.innerHTML = `${singleCard}`;
         text__count.textContent = contadorUser;
     }
-    if (cartasUser.length === 2) {
+    if (cartasUser.length === 2) {// evaluamos si saca black jack en las dos primeras cartas
         blackJack();
     }
     ases();
@@ -397,30 +405,32 @@ function turnoBoot() {
 
     cartaTapada.classList.remove('cartatapada');
 
-    if (contadorUser > 21) {
+    if (contadorUser > 21) {// si el user paso de 21 solo debe sacar una carta cualqueira para ganar
         repartirCarta(carta);
         cartasBoot.push(carta);
         crearCarta();
 
-    } else if (contadorUser < 21) {
-        while (contadorBoot < contadorUser && contadorBoot < 21) {
+    } else if (contadorUser < 21) {// si el user se planta debe intentar igualar su puntaje o superarlo, lo que ocurra primero
+        while (contadorBoot < contadorUser && contadorBoot <= 21) {
             repartirCarta(carta);
             cartasBoot.push(carta);
             crearCarta();
         };
-    } else if (contadorUser === 21) {
+    } else if (contadorUser === 21) {// si el user saca 21 se evalua si contiene un As y solo dos cartas para determinar si es black jack
 
         cartasUser.forEach(barajaUser => {
-            let asesU = barajaUser.includes('A');
-            if (asesU && cartasUser.length === 2) {
+            let asesU = barajaUser.includes('A');// evalua si tiene As
+            if (asesU && cartasUser.length === 2) {// y si tiene solo dos cartas si se cumple el boot solo casa una carta
                 repartirCarta(carta);
                 cartasBoot.push(carta);
                 crearCarta();
-            } else if (cartasUser.length > 2) {
+                return;
+            } else if (cartasUser.length > 2) {// si saco 21 pero con varias cartas el boot intentara igualarlo
                 while (contadorBoot < contadorUser && contadorBoot <= 21) {
                     repartirCarta(carta);
                     cartasBoot.push(carta);
                     crearCarta();
+                    return;
                 };
             }
         });
@@ -429,7 +439,7 @@ function turnoBoot() {
     quienGana();
 };
 
-function crearCarta() {
+function crearCarta() {// funcion para crear las cartas del boot, solo del boot
 
     const crearCarta = document.createElement('div');
     crearCarta.classList.add('card');
@@ -506,7 +516,7 @@ function crearCarta() {
             break;
         case '2':
             parseInt(singleNumber);
-            for (let i = 1; i <= singleNumber; i++) {
+            for (let i = 1; i <= singleNumber; i++) {// dependiendo del valor de la carta se pone la cantidad de figuras
                 const span = document.createElement('span');
                 cuadrado.classList.add('dosytres');
                 span.innerHTML = `${singleCard}`;
@@ -621,6 +631,7 @@ function crearCarta() {
     };
     ases();
     countBoot.style.visibility = 'visible';
+    
     //imprimimos los valores de la carta en el DOM
 
     upNumber.innerHTML = `${singleNumber}`;
@@ -631,19 +642,19 @@ function crearCarta() {
 }
 
 function count() {
-    if (contadorUser > 21) {
+    if (contadorUser > 21) {// esta funcion evalua si el user pasa de 21 puntos para llamar ciertas funciones
         ases();
         turnoBoot();
     }
 };
 
 //'♥', '♣', '♦', '♠'
-function ases() {
+function ases() {// funcion podemos evaluar si tienemos ases 
 
     cartasUser.forEach(barajaUser => {
         let asesU = barajaUser.includes('A');
 
-        if (asesU && contadorUser > 21) { //
+        if (asesU && contadorUser > 21) { //si tiene as y pasa de 21 el valor de as ahora vale 1, sino vale 11
 
             let unAs = barajaUser;
             contadorUser -= 10;
@@ -655,7 +666,7 @@ function ases() {
     cartasBoot.forEach(barajaBoot => {
         let asesB = barajaBoot.includes('A');
 
-        if (asesB && contadorBoot > 21) { //
+        if (asesB && contadorBoot > 21) { ////si tiene as y pasa de 21 el valor de as ahora vale 1, sino vale 11
 
             let unAs = barajaBoot;
             contadorBoot -= 10;
@@ -666,7 +677,7 @@ function ases() {
 
 }
 
-function quienGana() {
+function quienGana() {// dependiendo de los puntos determinamos quien gana la mano
 
     if (contadorUser > contadorBoot && contadorUser <= 21) {
 
@@ -720,7 +731,7 @@ function quienGana() {
     replay.classList.remove('hiden');
 };
 
-function blackJack() {
+function blackJack() {// evalua si se gana por black jack para mostrar una experiencia diferente
 
     cartasBoot.forEach(As => {
         let existeAS = As.includes('A');
@@ -751,6 +762,8 @@ function blackJack() {
             mymoney.textContent = money;
             replay.classList.remove('hiden');
             play.classList.add('hiden');
+            money += 25;
+            mymoney.textContent = money;
             turnoBoot();
 
             cartasBoot.forEach(As => {
@@ -764,7 +777,7 @@ function blackJack() {
                     plantarse.disabled = true;
                     youWin.style.visibility = 'visible';
                     youWin.textContent = 'EMPATE';
-                    money += apuesta;
+                    money -= 25;
                     mymoney.textContent = money;
                 }
             });
@@ -772,7 +785,7 @@ function blackJack() {
     });
 }
 
-function recargarPlante() {
+function recargarPlante() {// si el user pierde su capital puede reiniciarlo
     if (money === 0) {
         restaurarCapital.style.display = 'block';
         restaurarCapital.addEventListener('click', () => {
