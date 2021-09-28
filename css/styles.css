@@ -162,7 +162,7 @@ span {
 .botones {
     position: absolute;
     left: 50%;
-    top: 90%;
+    top: 93%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     display: flex;
@@ -470,25 +470,8 @@ span {
 
 /*RESPONSIVE*/
 
-@media(max-width: 1400px) {
-    .card {
-        margin: 0 -25px;
-    }
-    .baraja {
-        top: 20px;
-        left: 40px;
-    }
-}
-@media(max-width: 850px) {
-    body {
-        height: 95vh;
-    }
-}
 
 @media(max-width: 1400px) {
-    body {
-        height: 95vh;
-    }
 
     .container {
         height: 147px;
@@ -502,6 +485,7 @@ span {
     .card {
         width: 95px;
         height: 147px;
+        margin: 0 -15px;
     }
 
     .cartatapada {
@@ -518,13 +502,10 @@ span {
     }
 
     .baraja {
-        width: 72px;
-        height: 110px;
-        background: url(../imagenes/back.jpg.png)no-repeat;
-        background-size: cover;
-        position: absolute;
-        top: 20px;
-        left: 40px;
+        width: 95px;
+        height: 147px;
+        top: 40px;
+        left: 50px;
     }
 
     .fichas {
@@ -617,5 +598,19 @@ span {
     .carta,
     .plantarse {
         width: 80px;
+    }
+}
+@media(max-width: 850px) {
+    body {
+        height: 95vh;
+    }
+    .baraja {
+        width: 72px;
+        height: 110px;
+        top: 20px;
+        left: 40px;
+    }
+    .card {
+        margin: 0 -25px;
     }
 }
