@@ -31,6 +31,7 @@ body {
     position: relative;
 }
 
+
 /* estilos mesa boot */
 .continerBoot {
     width: 100%;
@@ -52,6 +53,7 @@ body {
     margin: 5px;
     background-color: hsl(120, 100%, 25%);
 }
+
 .plantarse {
     width: 120px;
     height: 30px;
@@ -60,6 +62,7 @@ body {
     background-color: hsl(0, 80%, 50%);
     margin: 5px;
 }
+
 .carta {
     width: 120px;
     height: 30px;
@@ -68,6 +71,7 @@ body {
     margin: 5px;
     background-color: hsl(120, 100%, 25%);
 }
+
 .restaurarCapital {
     width: 150px;
     height: 30px;
@@ -78,6 +82,7 @@ body {
     display: none;
     margin-bottom: 90px;
 }
+
 /* diseño carta general */
 .card {
     width: 145px;
@@ -93,7 +98,11 @@ body {
     flex-direction: row;
     z-index: 2;
     margin: 5px;
+    animation-name: cajones;
+    animation-duration: .2s;
+    animation-iteration-count: linear;
 }
+
 /* centro de la carta */
 .cuadrado {
     width: 74px;
@@ -103,6 +112,7 @@ body {
     right: 35px;
     z-index: 1;
 }
+
 .cardsred {
     color: red;
 }
@@ -161,15 +171,20 @@ span {
 
 .botones {
     position: absolute;
-    bottom: 50px;      
+    bottom: 50px;
 }
 
 .baraja {
+    width: 145px;
+    height: 225px;
+    padding: 12px;
+    background: hsl(0, 0%, 100%);
+    border-radius: 8px;
     background: url(../imagenes/back.jpg.png)no-repeat;
     background-size: cover;
     position: absolute;
-    top: 30px;
-    left: 0px;
+    top: 50px;
+    left: 50px;
     box-shadow:
         1px 1px 1px rgba(0, 0, 0, 0.2),
         5px 5px 0 -3px #f6f6f6,
@@ -194,6 +209,23 @@ span {
     margin: 5px;
     background: url(../imagenes/back.jpg.png)no-repeat;
     background-size: cover;
+    animation-name: cajones;
+    animation-duration: .2s;
+    animation-iteration-count: linear;
+}
+@keyframes cajones {
+
+    0% {
+        transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        top: -500%;
+        left:  -900%;
+    }
+
+    100% {
+        top: 0%;
+        left: 0%;
+    }
 }
 
 .k {
@@ -466,6 +498,20 @@ span {
 
 
 @media(max-width: 1400px) {
+    @keyframes cajones {
+
+        0% {
+            transform: rotate(-10deg);
+            -ms-transform: rotate(-10deg);
+            top: -200%;
+            left:  -700%;
+        }
+    
+        100% {
+            top: 0%;
+            left: 0%;
+        }
+    }
 
     .container {
         height: 147px;
@@ -485,7 +531,7 @@ span {
     .cartatapada {
         width: 95px;
         height: 147px;
-        margin: -20px;
+        margin: -15px;
     }
 
     .cuadrado {
@@ -594,21 +640,44 @@ span {
         width: 80px;
     }
 }
+
 @media(max-width: 850px) {
     body {
         height: 95vh;
     }
+
     .baraja {
         width: 72px;
         height: 110px;
         top: 20px;
-        left: 40px;
+        left: 20px;
     }
+
     .card {
         margin: 0 -25px;
     }
+    .cartatapada {
+        width: 95px;
+        height: 147px;
+        margin: -25px;
+    }
+
     .botones {
         position: absolute;
-        bottom: 30px;      
+        bottom: 30px;
+    }
+    @keyframes cajones {
+
+        0% {
+            transform: rotate(-10deg);
+            -ms-transform: rotate(-10deg);
+            top: -200%;
+            left:  -300%;
+        }
+    
+        100% {
+            top: 0%;
+            left: 0%;
+        }
     }
 }
