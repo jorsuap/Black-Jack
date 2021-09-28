@@ -161,13 +161,7 @@ span {
 
 .botones {
     position: absolute;
-    left: 50%;
-    top: 93%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    bottom: 50px;      
 }
 
 .baraja {
@@ -602,7 +596,7 @@ span {
 }
 @media(max-width: 850px) {
     body {
-        height: 95vh;
+        height: 100vh;
     }
     .baraja {
         width: 72px;
@@ -612,5 +606,9 @@ span {
     }
     .card {
         margin: 0 -25px;
+    }
+    .botones {
+        position: absolute;
+        bottom: 20px;      
     }
 }

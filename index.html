@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <html>
     <!-- Mesa de Juego -->
     <div class="blackjack">
         <div class="card baraja"></div>
@@ -25,13 +26,9 @@
             <p class="text__count"></p>
         </div>
         <!-- botones usuario -->
-        <div class="botones">
-            <button class="replay">Otra Vez</button>
-            <button id="play" class="play">Play</button>
-            <button id="plantarse" class="plantarse">Plantarse x</button>
-            <button class="carta">Carta +</button>
-        </div>
+        
     </div>
+    
     <!-- anuncios -->
     <span class="win"></span>
     <button class="restaurarCapital">Restaurar Capital</button>
@@ -43,9 +40,15 @@
         </div>
         <span class="total_apuesta"></span>
     </div>
+    <div class="botones">
+        <button class="replay">Otra Vez</button>
+        <button id="play" class="play">Play</button>
+        <button id="plantarse" class="plantarse">Plantarse x</button>
+        <button class="carta">Carta +</button>
+    </div>
     <!-- capital user -->
     <span class="mymoney"></span>
     <span><img src="imagenes/apuesta.png" alt="fichas" class="fichas"></span>
-
+    </html>
     <script defer src="js/blackjack.js"></script>
 </body>
