@@ -470,13 +470,18 @@ span {
 
 /*RESPONSIVE*/
 
-@media(max-width: 1024px) {
+@media(max-width: 1400px) {
     .card {
         margin: 0 -25px;
     }
     .baraja {
         top: 20px;
         left: 40px;
+    }
+}
+@media(max-width: 850px) {
+    body {
+        height: 95vh;
     }
 }
 
