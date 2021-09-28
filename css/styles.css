@@ -596,7 +596,7 @@ span {
 }
 @media(max-width: 850px) {
     body {
-        height: 100vh;
+        height: 95vh;
     }
     .baraja {
         width: 72px;
