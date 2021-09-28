@@ -22,7 +22,7 @@ const restaurarCapital = document.querySelector('.restaurarCapital');
 //Declaracio e inicializacion de variables
 
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; 
+let numbers = ['A', '10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
 let cartas = [];
 let cartasUser = [];
 let cartasBoot = [];
@@ -717,7 +717,7 @@ function quienGana() {// dependiendo de los puntos determinamos quien gana la ma
         mymoney.textContent = money;
         replay.classList.remove('hiden');
         play.classList.add('hiden');
-
+        blackJack();
     } else if (contadorUser === contadorBoot && contadorUser <= 21) {
 
         youWin.style.visibility = 'visible';
