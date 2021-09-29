@@ -18,13 +18,11 @@ const cincuenta = document.querySelector('.cincuenta');
 const cien = document.querySelector('.cien');
 const totalApuesta = document.querySelector('.total_apuesta');
 const restaurarCapital = document.querySelector('.restaurarCapital');
-const soudrepartir = document.querySelector('.soudrepartir');
-const soundbarajar = document.querySelector('.soundbarajar');
 
 //Declaracio e inicializacion de variables
 
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
+let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
 let cartas = [];
 let cartasUser = [];
 let asuser = [];
@@ -74,7 +72,7 @@ plantarse.addEventListener('click', () => { // boton plantarse cede turno al boo
 });
 
 replay.addEventListener('click', () => { //repley permite junar una nueva ronda reinicialdo algunos valores
-    soundbarajar.play();
+
     recargarPlante();
 
     apuesta = 0;
@@ -154,22 +152,19 @@ function inicarJuego() { //Inicia el juego, reinicia varibles, quitar cartas de 
     asboot.push(carta);
     crearCarta();
     conterBoot = 1;
-    setTimeout(function () {
-        // crea la carta tapada en el DOM
-        cartaTapada = document.createElement('div');
-        cartaTapada.classList.add('cartatapada');
-        continerBoot.appendChild(cartaTapada);
-    }, 200)
+
+    // crea la carta tapada en el DOM
+    cartaTapada = document.createElement('div');
+    cartaTapada.classList.add('cartatapada');
+    continerBoot.appendChild(cartaTapada);
     play.disabled = true;
     perdirCarta.disabled = false;
     plantarse.disabled = false;
-
 }
 
 function repartirCarta() {
     //metodo random repartir cartas aleatorias
 
-    soudrepartir.play();
     singleCard = cards[Math.floor(Math.random() * cards.length)];
     singleNumber = numbers[Math.floor(Math.random() * numbers.length)];
 
@@ -189,7 +184,6 @@ function repartirCarta() {
         cartas.push(carta);
     }
     return carta;
-
 }
 
 
@@ -197,212 +191,210 @@ function turnoUser() { // turno de usuario, inicialmente se ejecuta dos veces pa
 
     for (let i = 0; i < conterUser; i++) {
 
-        setTimeout(function () {
-            repartirCarta(carta);
-            cartasUser.push(carta);
-            asuser.push(carta);
+        repartirCarta(carta);
+        cartasUser.push(carta);
+        asuser.push(carta);
 
-            //Creamos elemntos para crear la carta con sus estilos
+        //Creamos elemntos para crear la carta con sus estilos
 
-            const crearCarta = document.createElement('div');
-            crearCarta.classList.add('card');
-            container.appendChild(crearCarta);
+        const crearCarta = document.createElement('div');
+        crearCarta.classList.add('card');
+        container.appendChild(crearCarta);
 
-            const up = document.createElement('p');
-            up.classList.add('up');
-            crearCarta.appendChild(up);
+        const up = document.createElement('p');
+        up.classList.add('up');
+        crearCarta.appendChild(up);
 
-            const upNumber = document.createElement('span');
-            upNumber.classList.add('up__number');
-            up.appendChild(upNumber);
+        const upNumber = document.createElement('span');
+        upNumber.classList.add('up__number');
+        up.appendChild(upNumber);
 
-            const upSimbol = document.createElement('span');
-            upSimbol.classList.add('up__simbol');
-            up.appendChild(upSimbol);
+        const upSimbol = document.createElement('span');
+        upSimbol.classList.add('up__simbol');
+        up.appendChild(upSimbol);
 
-            const down = document.createElement('p');
-            down.classList.add('down');
-            crearCarta.appendChild(down);
+        const down = document.createElement('p');
+        down.classList.add('down');
+        crearCarta.appendChild(down);
 
-            const downNumber = document.createElement('span');
-            downNumber.classList.add('down__number');
-            down.appendChild(downNumber);
+        const downNumber = document.createElement('span');
+        downNumber.classList.add('down__number');
+        down.appendChild(downNumber);
 
-            const downSimbol = document.createElement('span');
-            downSimbol.classList.add('down__simbol');
-            down.appendChild(downSimbol);
+        const downSimbol = document.createElement('span');
+        downSimbol.classList.add('down__simbol');
+        down.appendChild(downSimbol);
 
-            const cuadrado = document.createElement('span');
-            cuadrado.classList.add('cuadrado');
-            crearCarta.appendChild(cuadrado);
+        const cuadrado = document.createElement('span');
+        cuadrado.classList.add('cuadrado');
+        crearCarta.appendChild(cuadrado);
 
-            //En esta estructura IF damos color rojo a las pinta corazon y diamante
+        //En esta estructura IF damos color rojo a las pinta corazon y diamante
 
-            if (singleCard === '♥' || singleCard === '♦') {
+        if (singleCard === '♥' || singleCard === '♦') {
 
-                up.classList.remove('cardsblack');
-                down.classList.remove('cardsblack');
-                cuadrado.classList.remove('black');
+            up.classList.remove('cardsblack');
+            down.classList.remove('cardsblack');
+            cuadrado.classList.remove('black');
 
-                up.classList.add('cardsred');
-                down.classList.add('cardsred');
-                cuadrado.classList.add('red');
+            up.classList.add('cardsred');
+            down.classList.add('cardsred');
+            cuadrado.classList.add('red');
 
-            } else {
+        } else {
 
-                up.classList.remove('cardsred');
-                down.classList.remove('cardsred');
-                cuadrado.classList.remove('red');
+            up.classList.remove('cardsred');
+            down.classList.remove('cardsred');
+            cuadrado.classList.remove('red');
 
-                up.classList.add('cardsblack');
-                down.classList.add('cardsblack');
-                cuadrado.classList.add('black');
-            }
+            up.classList.add('cardsblack');
+            down.classList.add('cardsblack');
+            cuadrado.classList.add('black');
+        }
 
-            //Damos estilos y cantidad de pintas por carta y valor a cada carta
-            switch (singleNumber) {
-                case 'A':
-                    cuadrado.classList.add('a')
-                    cuadrado.innerHTML = `${singleCard}`;
-                    contadorUser += 11;
-                    break;
-                case 'J':
-                    cuadrado.classList.add('j');
-                    contadorUser += 10;
-                    break;
-                case 'Q':
-                    cuadrado.classList.add('q');
-                    contadorUser += 10;
-                    break;
-                case 'K':
-                    cuadrado.classList.add('k');
-                    contadorUser += 10;
-                    break;
-                case '2':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) { // dependiente del valor de la carta se crea la cantidad de figuras
-                        const span = document.createElement('span');
-                        cuadrado.classList.add('dosytres');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
+        //Damos estilos y cantidad de pintas por carta y valor a cada carta
+        switch (singleNumber) {
+            case 'A':
+                cuadrado.classList.add('a')
+                cuadrado.innerHTML = `${singleCard}`;
+                contadorUser += 11;
+                break;
+            case 'J':
+                cuadrado.classList.add('j');
+                contadorUser += 10;
+                break;
+            case 'Q':
+                cuadrado.classList.add('q');
+                contadorUser += 10;
+                break;
+            case 'K':
+                cuadrado.classList.add('k');
+                contadorUser += 10;
+                break;
+            case '2':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) { // dependiente del valor de la carta se crea la cantidad de figuras
+                    const span = document.createElement('span');
+                    cuadrado.classList.add('dosytres');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 2;
+                break;
+            case '3':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) {
+                    const span = document.createElement('span');
+                    cuadrado.classList.add('dosytres');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 3;
+                break;
+            case '4':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) {
+                    const span = document.createElement('span');
+                    cuadrado.classList.add('cuatro');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 4;
+                break;
+            case '5':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) {
+                    const span = document.createElement('span');
+                    if (i === 2) {
+                        span.classList.add('item5');
                     }
-                    contadorUser += 2;
-                    break;
-                case '3':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) {
-                        const span = document.createElement('span');
-                        cuadrado.classList.add('dosytres');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
+                    cuadrado.classList.add('cinco');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 5;
+                break;
+            case '6':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) {
+                    const span = document.createElement('span');
+                    cuadrado.classList.add('six');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 6;
+                break;
+            case '7':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) {
+                    const span = document.createElement('span');
+                    if (i === 2) {
+                        span.classList.add('item7');
                     }
-                    contadorUser += 3;
-                    break;
-                case '4':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) {
-                        const span = document.createElement('span');
-                        cuadrado.classList.add('cuatro');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
+                    if (i === 7) {
+                        span.classList.add('span7');
                     }
-                    contadorUser += 4;
-                    break;
-                case '5':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) {
-                        const span = document.createElement('span');
-                        if (i === 2) {
-                            span.classList.add('item5');
-                        }
-                        cuadrado.classList.add('cinco');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
+                    cuadrado.classList.add('seven');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 7;
+                break;
+            case '8':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) {
+                    const span = document.createElement('span');
+                    if (i === 2) {
+                        span.classList.add('item8');
                     }
-                    contadorUser += 5;
-                    break;
-                case '6':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) {
-                        const span = document.createElement('span');
-                        cuadrado.classList.add('six');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
+                    if (i === 7) {
+                        span.classList.add('span8');
                     }
-                    contadorUser += 6;
-                    break;
-                case '7':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) {
-                        const span = document.createElement('span');
-                        if (i === 2) {
-                            span.classList.add('item7');
-                        }
-                        if (i === 7) {
-                            span.classList.add('span7');
-                        }
-                        cuadrado.classList.add('seven');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
+                    cuadrado.classList.add('ocho');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 8;
+                break;
+            case '9':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) {
+                    const span = document.createElement('span');
+                    if (i === 5) {
+                        span.classList.add('item9');
                     }
-                    contadorUser += 7;
-                    break;
-                case '8':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) {
-                        const span = document.createElement('span');
-                        if (i === 2) {
-                            span.classList.add('item8');
-                        }
-                        if (i === 7) {
-                            span.classList.add('span8');
-                        }
-                        cuadrado.classList.add('ocho');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
+                    cuadrado.classList.add('nine');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 9;
+                break;
+            case '10':
+                parseInt(singleNumber);
+                for (let i = 1; i <= singleNumber; i++) {
+                    const span = document.createElement('span');
+                    if (i === 5) {
+                        span.classList.add('item10');
                     }
-                    contadorUser += 8;
-                    break;
-                case '9':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) {
-                        const span = document.createElement('span');
-                        if (i === 5) {
-                            span.classList.add('item9');
-                        }
-                        cuadrado.classList.add('nine');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
+                    if (i === 10) {
+                        span.classList.add('span10');
                     }
-                    contadorUser += 9;
-                    break;
-                case '10':
-                    parseInt(singleNumber);
-                    for (let i = 1; i <= singleNumber; i++) {
-                        const span = document.createElement('span');
-                        if (i === 5) {
-                            span.classList.add('item10');
-                        }
-                        if (i === 10) {
-                            span.classList.add('span10');
-                        }
-                        cuadrado.classList.add('ten');
-                        span.innerHTML = `${singleCard}`;
-                        cuadrado.appendChild(span);
-                    }
-                    contadorUser += 10;
-                    break;
-            };
+                    cuadrado.classList.add('ten');
+                    span.innerHTML = `${singleCard}`;
+                    cuadrado.appendChild(span);
+                }
+                contadorUser += 10;
+                break;
+        };
 
-            text__count.style.visibility = 'visible';
+        text__count.style.visibility = 'visible';
 
-            //imprimimos los valores de la carta en el DOM
-            upNumber.innerHTML = `${singleNumber}`;
-            upSimbol.innerHTML = `${singleCard}`;
-            downNumber.innerHTML = `${singleNumber}`;
-            downSimbol.innerHTML = `${singleCard}`;
-            text__count.textContent = contadorUser;
-        }, 200)
+        //imprimimos los valores de la carta en el DOM
+        upNumber.innerHTML = `${singleNumber}`;
+        upSimbol.innerHTML = `${singleCard}`;
+        downNumber.innerHTML = `${singleNumber}`;
+        downSimbol.innerHTML = `${singleCard}`;
+        text__count.textContent = contadorUser;
     }
     if (cartasUser.length === 2) { // evaluamos si saca black jack en las dos primeras cartas
         blackJack();
@@ -697,69 +689,68 @@ function ases() { // funcion podemos evaluar si tienemos ases
 
 function quienGana() { // dependiendo de los puntos determinamos quien gana la mano
 
-    setTimeout(function () {
-        if (contadorUser > contadorBoot && contadorUser <= 21) {
+    if (contadorUser > contadorBoot && contadorUser <= 21) {
 
-            youWin.style.visibility = 'visible';
-            youWin.textContent = 'GANASTE';
-            play.disabled = false;
-            perdirCarta.disabled = true;
-            plantarse.disabled = true;
-            money += apuesta * 2;
-            mymoney.textContent = money;
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'GANASTE';
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
+        money += apuesta * 2;
+        mymoney.textContent = money;
 
-        } else if (contadorUser <= 21 && contadorBoot > 21) {
+    } else if (contadorUser <= 21 && contadorBoot > 21) {
 
-            youWin.style.visibility = 'visible';
-            youWin.textContent = 'GANASTE';
-            play.disabled = false;
-            perdirCarta.disabled = true;
-            plantarse.disabled = true;
-            money += apuesta * 2;
-            mymoney.textContent = money;
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'GANASTE';
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
+        money += apuesta * 2;
+        mymoney.textContent = money;
 
-        } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
+    } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
 
-            youWin.style.visibility = 'visible';
-            youWin.textContent = 'PERDISTE';
-            play.disabled = false;
-            perdirCarta.disabled = true;
-            plantarse.disabled = true;
-        } else if (contadorUser > 21 && contadorBoot <= 21) {
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'PERDISTE';
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
 
-            youWin.style.visibility = 'visible';
-            youWin.textContent = 'PERDISTE';
-            play.disabled = false;
-            perdirCarta.disabled = true;
-            plantarse.disabled = true;
-            mymoney.textContent = money;
-            replay.classList.remove('hiden');
-            play.classList.add('hiden');
-        } else if (contadorUser === contadorBoot && contadorUser <= 21) {
+    } else if (contadorUser > 21 && contadorBoot <= 21) {
 
-            youWin.style.visibility = 'visible';
-            youWin.textContent = 'EMPATE';
-            play.disabled = false;
-            perdirCarta.disabled = true;
-            plantarse.disabled = true;
-            money += apuesta;
-            mymoney.textContent = money;
-        }
-        
-       
-    }, 300)
-    blackJack();
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'PERDISTE';
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
+        mymoney.textContent = money;
+        replay.classList.remove('hiden');
+        play.classList.add('hiden');
+    } else if (contadorUser === contadorBoot && contadorUser <= 21) {
+
+        youWin.style.visibility = 'visible';
+        youWin.textContent = 'EMPATE';
+        play.disabled = false;
+        perdirCarta.disabled = true;
+        plantarse.disabled = true;
+        money += apuesta;
+        mymoney.textContent = money;
+    };
+    
     replay.classList.remove('hiden');
+    blackJack();
 };
 
 function blackJack() { // evalua si se gana por black jack para mostrar una experiencia diferente
 
-
+    
     if (cartasBoot.length === 2 && cartasUser.length > 2) {
 
         cartasBoot.forEach(As => {
             let existeAS = As.includes('A');
             if (existeAS && contadorBoot === 21) {
+                console.log('primero');
                 const jb = document.createElement('span');
                 jb.classList.add('jb');
                 continerBoot.appendChild(jb);
@@ -771,10 +762,27 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                 youWin.textContent = 'PERDISTE';
             }
         });
-    } else if (cartasUser.length === 2 && cartasBoot.length < 2) {
+    }else if(cartasBoot.length === 2 && cartasUser.length === 2 && contadorBoot > contadorUser){
+        cartasBoot.forEach(As => {
+            let existeAS = As.includes('A');
+            if (existeAS && contadorBoot === 21) {
+                console.log('Ultimo')
+                const jb = document.createElement('span');
+                jb.classList.add('jb');
+                continerBoot.appendChild(jb);
+                youWin.style.visibility = 'visible';
+                play.disabled = false;
+                perdirCarta.disabled = true;
+                plantarse.disabled = true;
+                youWin.style.visibility = 'visible';
+                youWin.textContent = 'PERDISTE';
+            }
+        });
+    }else if(cartasUser.length === 2 && cartasBoot.length < 2){
         cartasUser.forEach(As => {
             let existeAS = As.includes('A');
             if (existeAS && contadorUser === 21) {
+                console.log('segundo');
                 const jb = document.createElement('span');
                 jb.classList.add('jb');
                 container.appendChild(jb);
@@ -789,10 +797,11 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                 money += 25;
                 mymoney.textContent = money;
                 turnoBoot();
-
+    
                 cartasBoot.forEach(As => {
                     let existeAS = As.includes('A');
                     if (existeAS && contadorBoot === 21) {
+                        console.log('tercero');
                         const jb = document.createElement('span');
                         jb.classList.add('jb');
                         continerBoot.appendChild(jb);
@@ -808,10 +817,11 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
             }
         });
 
-    } else if (cartasUser.length === 2 && cartasBoot.length === 2) {
+    }else if(cartasUser.length === 2 && cartasBoot.length === 2){
         cartasUser.forEach(As => {
             let existeAS = As.includes('A');
             if (existeAS && contadorUser === 21) {
+                console.log('cuarto');
                 const jb = document.createElement('span');
                 jb.classList.add('jb');
                 container.appendChild(jb);
@@ -825,14 +835,17 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                 play.classList.add('hiden');
                 money += 25;
                 mymoney.textContent = money;
-
+    
                 cartasBoot.forEach(As => {
                     let existeAS = As.includes('A');
                     if (existeAS && contadorBoot === 21) {
+                        console.log('quinto');
                         const jb = document.createElement('span');
                         jb.classList.add('jb');
                         continerBoot.appendChild(jb);
-
+                        play.disabled = false;
+                        perdirCarta.disabled = true;
+                        plantarse.disabled = true;
                         youWin.style.visibility = 'visible';
                         youWin.textContent = 'EMPATE';
                         money -= 25;
@@ -841,9 +854,10 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                 });
             }
         });
+
     }
 
-
+   
 }
 
 function recargarPlante() { // si el user pierde su capital puede reiniciarlo
