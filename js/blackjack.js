@@ -19,11 +19,12 @@ const cien = document.querySelector('.cien');
 const totalApuesta = document.querySelector('.total_apuesta');
 const restaurarCapital = document.querySelector('.restaurarCapital');
 const soudrepartir = document.querySelector('.soudrepartir');
+const soundbarajar = document.querySelector('.soundbarajar');
 
 //Declaracio e inicializacion de variables
 
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //
+let numbers = ['A',  '10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
 let cartas = [];
 let cartasUser = [];
 let asuser = [];
@@ -73,7 +74,7 @@ plantarse.addEventListener('click', () => { // boton plantarse cede turno al boo
 });
 
 replay.addEventListener('click', () => { //repley permite junar una nueva ronda reinicialdo algunos valores
-
+    soundbarajar.play();
     recargarPlante();
 
     apuesta = 0;
@@ -154,10 +155,12 @@ function inicarJuego() { //Inicia el juego, reinicia varibles, quitar cartas de 
     crearCarta();
     conterBoot = 1;
 
-    // crea la carta tapada en el DOM
-    cartaTapada = document.createElement('div');
-    cartaTapada.classList.add('cartatapada');
-    continerBoot.appendChild(cartaTapada);
+    // setTimeout(function () {
+        // crea la carta tapada en el DOM
+        cartaTapada = document.createElement('div');
+        cartaTapada.classList.add('cartatapada');
+        continerBoot.appendChild(cartaTapada);
+    // }, 200)
     play.disabled = true;
     perdirCarta.disabled = false;
     plantarse.disabled = false;
@@ -192,6 +195,7 @@ function repartirCarta() {
 function turnoUser() { // turno de usuario, inicialmente se ejecuta dos veces para dar dos cartas y en cada llamado posterior solo arroja una carta
 
     for (let i = 0; i < conterUser; i++) {
+        
 
         repartirCarta(carta);
         cartasUser.push(carta);
@@ -420,12 +424,12 @@ function turnoBoot() {
         crearCarta();
 
     } else if (contadorUser < 21) { // si el user se planta debe intentar igualar su puntaje o superarlo, lo que ocurra primero
-         do{
+        do {
             repartirCarta(carta);
             cartasBoot.push(carta);
             asboot.push(carta);
             crearCarta();
-        }while (contadorBoot <= contadorUser && contadorBoot <= 21);
+        } while (contadorBoot <= contadorUser && contadorBoot <= 21);
     } else if (contadorUser === 21) { // si el user saca 21 se evalua si contiene un As y solo dos cartas para determinar si es black jack
 
         cartasUser.forEach(barajaUser => {
@@ -739,14 +743,14 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
         money += apuesta;
         mymoney.textContent = money;
     };
-    
+
     replay.classList.remove('hiden');
     blackJack();
 };
 
 function blackJack() { // evalua si se gana por black jack para mostrar una experiencia diferente
 
-    
+
     if (cartasBoot.length === 2 && cartasUser.length > 2) {
 
         cartasBoot.forEach(As => {
@@ -764,7 +768,7 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                 youWin.textContent = 'PERDISTE';
             }
         });
-    }else if(cartasBoot.length === 2 && cartasUser.length === 2 && contadorBoot > contadorUser){
+    } else if (cartasBoot.length === 2 && cartasUser.length === 2 && contadorBoot > contadorUser) {
         cartasBoot.forEach(As => {
             let existeAS = As.includes('A');
             if (existeAS && contadorBoot === 21) {
@@ -780,7 +784,7 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                 youWin.textContent = 'PERDISTE';
             }
         });
-    }else if(cartasUser.length === 2 && cartasBoot.length < 2){
+    } else if (cartasUser.length === 2 && cartasBoot.length < 2) {
         cartasUser.forEach(As => {
             let existeAS = As.includes('A');
             if (existeAS && contadorUser === 21) {
@@ -799,7 +803,7 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                 money += 25;
                 mymoney.textContent = money;
                 turnoBoot();
-    
+
                 cartasBoot.forEach(As => {
                     let existeAS = As.includes('A');
                     if (existeAS && contadorBoot === 21) {
@@ -819,7 +823,7 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
             }
         });
 
-    }else if(cartasUser.length === 2 && cartasBoot.length === 2){
+    } else if (cartasUser.length === 2 && cartasBoot.length === 2) {
         cartasUser.forEach(As => {
             let existeAS = As.includes('A');
             if (existeAS && contadorUser === 21) {
@@ -837,7 +841,7 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                 play.classList.add('hiden');
                 money += 25;
                 mymoney.textContent = money;
-    
+
                 cartasBoot.forEach(As => {
                     let existeAS = As.includes('A');
                     if (existeAS && contadorBoot === 21) {
@@ -859,7 +863,7 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
 
     }
 
-   
+
 }
 
 function recargarPlante() { // si el user pierde su capital puede reiniciarlo
