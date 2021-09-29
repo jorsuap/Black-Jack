@@ -656,6 +656,17 @@ span {
     .card {
         margin: 0 -25px;
     }
+    .a {
+        font-size: 2rem;
+    }
+    
+    .up__simbol {
+        font-size: 0.7rem;
+    }
+
+    .down__simbol {
+        font-size: 0.7rem;
+    }
     .cartatapada {
         width: 95px;
         height: 147px;
