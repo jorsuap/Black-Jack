@@ -24,7 +24,7 @@ const soundbarajar = document.querySelector('.soundbarajar');
 //Declaracio e inicializacion de variables
 
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A',  '10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
+let numbers = ['A', '2','3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
 let cartas = [];
 let cartasUser = [];
 let asuser = [];
@@ -155,18 +155,20 @@ function inicarJuego() { //Inicia el juego, reinicia varibles, quitar cartas de 
     crearCarta();
     conterBoot = 1;
 
-    // setTimeout(function () {
+    setTimeout(function () {
         // crea la carta tapada en el DOM
         cartaTapada = document.createElement('div');
         cartaTapada.classList.add('cartatapada');
         continerBoot.appendChild(cartaTapada);
-    // }, 200)
+    }, 200)
+
     play.disabled = true;
     perdirCarta.disabled = false;
     plantarse.disabled = false;
 }
 
 function repartirCarta() {
+
     soudrepartir.play();
     //metodo random repartir cartas aleatorias
 
@@ -189,270 +191,272 @@ function repartirCarta() {
         cartas.push(carta);
     }
     return carta;
-}
-
-
-function turnoUser() { // turno de usuario, inicialmente se ejecuta dos veces para dar dos cartas y en cada llamado posterior solo arroja una carta
-
-    for (let i = 0; i < conterUser; i++) {
-        
-
-        repartirCarta(carta);
-        cartasUser.push(carta);
-        asuser.push(carta);
-
-        //Creamos elemntos para crear la carta con sus estilos
-
-        const crearCarta = document.createElement('div');
-        crearCarta.classList.add('card');
-        container.appendChild(crearCarta);
-
-        const up = document.createElement('p');
-        up.classList.add('up');
-        crearCarta.appendChild(up);
-
-        const upNumber = document.createElement('span');
-        upNumber.classList.add('up__number');
-        up.appendChild(upNumber);
-
-        const upSimbol = document.createElement('span');
-        upSimbol.classList.add('up__simbol');
-        up.appendChild(upSimbol);
-
-        const down = document.createElement('p');
-        down.classList.add('down');
-        crearCarta.appendChild(down);
-
-        const downNumber = document.createElement('span');
-        downNumber.classList.add('down__number');
-        down.appendChild(downNumber);
-
-        const downSimbol = document.createElement('span');
-        downSimbol.classList.add('down__simbol');
-        down.appendChild(downSimbol);
-
-        const cuadrado = document.createElement('span');
-        cuadrado.classList.add('cuadrado');
-        crearCarta.appendChild(cuadrado);
-
-        //En esta estructura IF damos color rojo a las pinta corazon y diamante
-
-        if (singleCard === '♥' || singleCard === '♦') {
-
-            up.classList.remove('cardsblack');
-            down.classList.remove('cardsblack');
-            cuadrado.classList.remove('black');
-
-            up.classList.add('cardsred');
-            down.classList.add('cardsred');
-            cuadrado.classList.add('red');
-
-        } else {
-
-            up.classList.remove('cardsred');
-            down.classList.remove('cardsred');
-            cuadrado.classList.remove('red');
-
-            up.classList.add('cardsblack');
-            down.classList.add('cardsblack');
-            cuadrado.classList.add('black');
-        }
-
-        //Damos estilos y cantidad de pintas por carta y valor a cada carta
-        switch (singleNumber) {
-            case 'A':
-                cuadrado.classList.add('a')
-                cuadrado.innerHTML = `${singleCard}`;
-                contadorUser += 11;
-                break;
-            case 'J':
-                cuadrado.classList.add('j');
-                contadorUser += 10;
-                break;
-            case 'Q':
-                cuadrado.classList.add('q');
-                contadorUser += 10;
-                break;
-            case 'K':
-                cuadrado.classList.add('k');
-                contadorUser += 10;
-                break;
-            case '2':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) { // dependiente del valor de la carta se crea la cantidad de figuras
-                    const span = document.createElement('span');
-                    cuadrado.classList.add('dosytres');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 2;
-                break;
-            case '3':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
-                    const span = document.createElement('span');
-                    cuadrado.classList.add('dosytres');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 3;
-                break;
-            case '4':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
-                    const span = document.createElement('span');
-                    cuadrado.classList.add('cuatro');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 4;
-                break;
-            case '5':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
-                    const span = document.createElement('span');
-                    if (i === 2) {
-                        span.classList.add('item5');
-                    }
-                    cuadrado.classList.add('cinco');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 5;
-                break;
-            case '6':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
-                    const span = document.createElement('span');
-                    cuadrado.classList.add('six');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 6;
-                break;
-            case '7':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
-                    const span = document.createElement('span');
-                    if (i === 2) {
-                        span.classList.add('item7');
-                    }
-                    if (i === 7) {
-                        span.classList.add('span7');
-                    }
-                    cuadrado.classList.add('seven');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 7;
-                break;
-            case '8':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
-                    const span = document.createElement('span');
-                    if (i === 2) {
-                        span.classList.add('item8');
-                    }
-                    if (i === 7) {
-                        span.classList.add('span8');
-                    }
-                    cuadrado.classList.add('ocho');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 8;
-                break;
-            case '9':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
-                    const span = document.createElement('span');
-                    if (i === 5) {
-                        span.classList.add('item9');
-                    }
-                    cuadrado.classList.add('nine');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 9;
-                break;
-            case '10':
-                parseInt(singleNumber);
-                for (let i = 1; i <= singleNumber; i++) {
-                    const span = document.createElement('span');
-                    if (i === 5) {
-                        span.classList.add('item10');
-                    }
-                    if (i === 10) {
-                        span.classList.add('span10');
-                    }
-                    cuadrado.classList.add('ten');
-                    span.innerHTML = `${singleCard}`;
-                    cuadrado.appendChild(span);
-                }
-                contadorUser += 10;
-                break;
-        };
-
-        text__count.style.visibility = 'visible';
-
-        //imprimimos los valores de la carta en el DOM
-        upNumber.innerHTML = `${singleNumber}`;
-        upSimbol.innerHTML = `${singleCard}`;
-        downNumber.innerHTML = `${singleNumber}`;
-        downSimbol.innerHTML = `${singleCard}`;
-        text__count.textContent = contadorUser;
-    }
-    if (cartasUser.length === 2) { // evaluamos si saca black jack en las dos primeras cartas
-        blackJack();
-    }
-    ases();
-    count();
-    conterUser = 1;
 };
 
+function turnoUser() { // turno de usuario, inicialmente se ejecuta dos veces para dar dos cartas y en cada llamado posterior solo arroja una carta
+    
+    setTimeout(function () {
+
+        for (let i = 0; i < conterUser; i++) {
+
+            repartirCarta(carta);
+            cartasUser.push(carta);
+            asuser.push(carta);
+
+            //Creamos elemntos para crear la carta con sus estilos
+
+            const crearCarta = document.createElement('div');
+            crearCarta.classList.add('card');
+            container.appendChild(crearCarta);
+
+            const up = document.createElement('p');
+            up.classList.add('up');
+            crearCarta.appendChild(up);
+
+            const upNumber = document.createElement('span');
+            upNumber.classList.add('up__number');
+            up.appendChild(upNumber);
+
+            const upSimbol = document.createElement('span');
+            upSimbol.classList.add('up__simbol');
+            up.appendChild(upSimbol);
+
+            const down = document.createElement('p');
+            down.classList.add('down');
+            crearCarta.appendChild(down);
+
+            const downNumber = document.createElement('span');
+            downNumber.classList.add('down__number');
+            down.appendChild(downNumber);
+
+            const downSimbol = document.createElement('span');
+            downSimbol.classList.add('down__simbol');
+            down.appendChild(downSimbol);
+
+            const cuadrado = document.createElement('span');
+            cuadrado.classList.add('cuadrado');
+            crearCarta.appendChild(cuadrado);
+
+            //En esta estructura IF damos color rojo a las pinta corazon y diamante
+
+            if (singleCard === '♥' || singleCard === '♦') {
+
+                up.classList.remove('cardsblack');
+                down.classList.remove('cardsblack');
+                cuadrado.classList.remove('black');
+
+                up.classList.add('cardsred');
+                down.classList.add('cardsred');
+                cuadrado.classList.add('red');
+
+            } else {
+
+                up.classList.remove('cardsred');
+                down.classList.remove('cardsred');
+                cuadrado.classList.remove('red');
+
+                up.classList.add('cardsblack');
+                down.classList.add('cardsblack');
+                cuadrado.classList.add('black');
+            }
+
+            //Damos estilos y cantidad de pintas por carta y valor a cada carta
+            switch (singleNumber) {
+                case 'A':
+                    cuadrado.classList.add('a')
+                    cuadrado.innerHTML = `${singleCard}`;
+                    contadorUser += 11;
+                    break;
+                case 'J':
+                    cuadrado.classList.add('j');
+                    contadorUser += 10;
+                    break;
+                case 'Q':
+                    cuadrado.classList.add('q');
+                    contadorUser += 10;
+                    break;
+                case 'K':
+                    cuadrado.classList.add('k');
+                    contadorUser += 10;
+                    break;
+                case '2':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) { // dependiente del valor de la carta se crea la cantidad de figuras
+                        const span = document.createElement('span');
+                        cuadrado.classList.add('dosytres');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 2;
+                    break;
+                case '3':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) {
+                        const span = document.createElement('span');
+                        cuadrado.classList.add('dosytres');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 3;
+                    break;
+                case '4':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) {
+                        const span = document.createElement('span');
+                        cuadrado.classList.add('cuatro');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 4;
+                    break;
+                case '5':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) {
+                        const span = document.createElement('span');
+                        if (i === 2) {
+                            span.classList.add('item5');
+                        }
+                        cuadrado.classList.add('cinco');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 5;
+                    break;
+                case '6':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) {
+                        const span = document.createElement('span');
+                        cuadrado.classList.add('six');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 6;
+                    break;
+                case '7':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) {
+                        const span = document.createElement('span');
+                        if (i === 2) {
+                            span.classList.add('item7');
+                        }
+                        if (i === 7) {
+                            span.classList.add('span7');
+                        }
+                        cuadrado.classList.add('seven');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 7;
+                    break;
+                case '8':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) {
+                        const span = document.createElement('span');
+                        if (i === 2) {
+                            span.classList.add('item8');
+                        }
+                        if (i === 7) {
+                            span.classList.add('span8');
+                        }
+                        cuadrado.classList.add('ocho');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 8;
+                    break;
+                case '9':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) {
+                        const span = document.createElement('span');
+                        if (i === 5) {
+                            span.classList.add('item9');
+                        }
+                        cuadrado.classList.add('nine');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 9;
+                    break;
+                case '10':
+                    parseInt(singleNumber);
+                    for (let i = 1; i <= singleNumber; i++) {
+                        const span = document.createElement('span');
+                        if (i === 5) {
+                            span.classList.add('item10');
+                        }
+                        if (i === 10) {
+                            span.classList.add('span10');
+                        }
+                        cuadrado.classList.add('ten');
+                        span.innerHTML = `${singleCard}`;
+                        cuadrado.appendChild(span);
+                    }
+                    contadorUser += 10;
+                    break;
+            };
+            text__count.style.visibility = 'visible';
+
+            //imprimimos los valores de la carta en el DOM
+            upNumber.innerHTML = `${singleNumber}`;
+            upSimbol.innerHTML = `${singleCard}`;
+            downNumber.innerHTML = `${singleNumber}`;
+            downSimbol.innerHTML = `${singleCard}`;
+            text__count.textContent = contadorUser;
+        }
+        if (cartasUser.length === 2) { // evaluamos si saca black jack en las dos primeras cartas
+            blackJack();
+        }
+        ases();
+        count();
+        conterUser = 1;
+    }, 200)
+};
 
 ///-----------------Funcion para darle cartas al Boot-----------------------------------
 
 function turnoBoot() {
 
-    cartaTapada.classList.remove('cartatapada');
+    setTimeout(function () {
 
-    if (contadorUser > 21) { // si el user paso de 21 solo debe sacar una carta cualqueira para ganar
-        repartirCarta(carta);
-        cartasBoot.push(carta);
-        asboot.push(carta);
-        crearCarta();
+        cartaTapada.classList.remove('cartatapada');
 
-    } else if (contadorUser < 21) { // si el user se planta debe intentar igualar su puntaje o superarlo, lo que ocurra primero
-        do {
+        if (contadorUser > 21) { // si el user paso de 21 solo debe sacar una carta cualqueira para ganar
             repartirCarta(carta);
             cartasBoot.push(carta);
             asboot.push(carta);
             crearCarta();
-        } while (contadorBoot <= contadorUser && contadorBoot <= 21);
-    } else if (contadorUser === 21) { // si el user saca 21 se evalua si contiene un As y solo dos cartas para determinar si es black jack
 
-        cartasUser.forEach(barajaUser => {
-            let asesU = barajaUser.includes('A'); // evalua si tiene As
-            if (asesU && cartasUser.length === 2) { // y si tiene solo dos cartas si se cumple el boot solo casa una carta
+        } else if (contadorUser < 21) { // si el user se planta debe intentar igualar su puntaje o superarlo, lo que ocurra primero
+            do {
                 repartirCarta(carta);
                 cartasBoot.push(carta);
                 asboot.push(carta);
                 crearCarta();
+            } while (contadorBoot < contadorUser && contadorBoot <= 21);
 
-            } else if (cartasUser.length > 2) { // si saco 21 pero con varias cartas el boot intentara igualarlo
-                while (contadorBoot < contadorUser && contadorBoot <= 21) {
+        } else if (contadorUser === 21) { // si el user saca 21 se evalua si contiene un As y solo dos cartas para determinar si es black jack
+
+            cartasUser.forEach(barajaUser => {
+                let asesU = barajaUser.includes('A'); // evalua si tiene As
+                if (asesU && cartasUser.length === 2) { // y si tiene solo dos cartas si se cumple el boot solo casa una carta
                     repartirCarta(carta);
                     cartasBoot.push(carta);
                     asboot.push(carta);
                     crearCarta();
 
-                };
-            }
-        });
-    }
-    ases();
-    quienGana();
+                } else if (cartasUser.length > 2) { // si saco 21 pero con varias cartas el boot intentara igualarlo
+                    while (contadorBoot < contadorUser && contadorBoot <= 21) {
+                        repartirCarta(carta);
+                        cartasBoot.push(carta);
+                        asboot.push(carta);
+                        crearCarta();
+                    };
+                }
+            });
+        }
+        ases();
+        quienGana();
+    }, 200)
 };
 
 function crearCarta() { // funcion para crear las cartas del boot, solo del boot
@@ -671,7 +675,6 @@ function ases() { // funcion podemos evaluar si tienemos ases
         let asesU = barajaUser.includes('A');
 
         if (asesU && contadorUser > 21) { //si tiene as y pasa de 21 el valor de as ahora vale 1, sino vale 11
-
             let unAs = barajaUser;
             contadorUser -= 10;
             text__count.textContent = contadorUser;
@@ -683,7 +686,6 @@ function ases() { // funcion podemos evaluar si tienemos ases
         let asesB = barajaBoot.includes('A');
 
         if (asesB && contadorBoot > 21) { ////si tiene as y pasa de 21 el valor de as ahora vale 1, sino vale 11
-
             let unAs = barajaBoot;
             contadorBoot -= 10;
             countBoot.textContent = contadorBoot;
@@ -694,176 +696,170 @@ function ases() { // funcion podemos evaluar si tienemos ases
 }
 
 function quienGana() { // dependiendo de los puntos determinamos quien gana la mano
+    setTimeout(function () {
+        if (contadorUser > contadorBoot && contadorUser <= 21) {
 
-    if (contadorUser > contadorBoot && contadorUser <= 21) {
+            youWin.style.visibility = 'visible';
+            youWin.textContent = 'GANASTE';
+            play.disabled = false;
+            perdirCarta.disabled = true;
+            plantarse.disabled = true;
+            money += apuesta * 2;
+            mymoney.textContent = money;
 
-        youWin.style.visibility = 'visible';
-        youWin.textContent = 'GANASTE';
-        play.disabled = false;
-        perdirCarta.disabled = true;
-        plantarse.disabled = true;
-        money += apuesta * 2;
-        mymoney.textContent = money;
+        } else if (contadorUser <= 21 && contadorBoot > 21) {
 
-    } else if (contadorUser <= 21 && contadorBoot > 21) {
+            youWin.style.visibility = 'visible';
+            youWin.textContent = 'GANASTE';
+            play.disabled = false;
+            perdirCarta.disabled = true;
+            plantarse.disabled = true;
+            money += apuesta * 2;
+            mymoney.textContent = money;
 
-        youWin.style.visibility = 'visible';
-        youWin.textContent = 'GANASTE';
-        play.disabled = false;
-        perdirCarta.disabled = true;
-        plantarse.disabled = true;
-        money += apuesta * 2;
-        mymoney.textContent = money;
+        } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
 
-    } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
+            youWin.style.visibility = 'visible';
+            youWin.textContent = 'PERDISTE';
+            play.disabled = false;
+            perdirCarta.disabled = true;
+            plantarse.disabled = true;
 
-        youWin.style.visibility = 'visible';
-        youWin.textContent = 'PERDISTE';
-        play.disabled = false;
-        perdirCarta.disabled = true;
-        plantarse.disabled = true;
+        } else if (contadorUser > 21 && contadorBoot <= 21) {
 
-    } else if (contadorUser > 21 && contadorBoot <= 21) {
+            youWin.style.visibility = 'visible';
+            youWin.textContent = 'PERDISTE';
+            play.disabled = false;
+            perdirCarta.disabled = true;
+            plantarse.disabled = true;
+            mymoney.textContent = money;
+            replay.classList.remove('hiden');
+            play.classList.add('hiden');
+        } else if (contadorUser === contadorBoot && contadorUser <= 21) {
 
-        youWin.style.visibility = 'visible';
-        youWin.textContent = 'PERDISTE';
-        play.disabled = false;
-        perdirCarta.disabled = true;
-        plantarse.disabled = true;
-        mymoney.textContent = money;
+            youWin.style.visibility = 'visible';
+            youWin.textContent = 'EMPATE';
+            play.disabled = false;
+            perdirCarta.disabled = true;
+            plantarse.disabled = true;
+            money += apuesta;
+            mymoney.textContent = money;
+        };
+
         replay.classList.remove('hiden');
-        play.classList.add('hiden');
-    } else if (contadorUser === contadorBoot && contadorUser <= 21) {
-
-        youWin.style.visibility = 'visible';
-        youWin.textContent = 'EMPATE';
-        play.disabled = false;
-        perdirCarta.disabled = true;
-        plantarse.disabled = true;
-        money += apuesta;
-        mymoney.textContent = money;
-    };
-
-    replay.classList.remove('hiden');
-    blackJack();
+        blackJack();
+    }, 200)
 };
 
 function blackJack() { // evalua si se gana por black jack para mostrar una experiencia diferente
 
+    setTimeout(function () {
+        if (cartasBoot.length === 2 && cartasUser.length > 2) {
+            cartasBoot.forEach(As => {
+                let existeAS = As.includes('A');
+                if (existeAS && contadorBoot === 21) {
+                    const jb = document.createElement('span');
+                    jb.classList.add('jb');
+                    continerBoot.appendChild(jb);
+                    youWin.style.visibility = 'visible';
+                    play.disabled = false;
+                    perdirCarta.disabled = true;
+                    plantarse.disabled = true;
+                    youWin.style.visibility = 'visible';
+                    youWin.textContent = 'PERDISTE';
+                }
+            });
+        } else if (cartasBoot.length === 2 && cartasUser.length === 2 && contadorBoot > contadorUser) {
+            cartasBoot.forEach(As => {
+                let existeAS = As.includes('A');
+                if (existeAS && contadorBoot === 21) {
+                    const jb = document.createElement('span');
+                    jb.classList.add('jb');
+                    continerBoot.appendChild(jb);
+                    youWin.style.visibility = 'visible';
+                    play.disabled = false;
+                    perdirCarta.disabled = true;
+                    plantarse.disabled = true;
+                    youWin.style.visibility = 'visible';
+                    youWin.textContent = 'PERDISTE';
+                }
+            });
+        } else if (cartasUser.length === 2 && cartasBoot.length < 2) {
+            cartasUser.forEach(As => {
+                let existeAS = As.includes('A');
+                if (existeAS && contadorUser === 21) {
+                    const jb = document.createElement('span');
+                    jb.classList.add('jb');
+                    container.appendChild(jb);
+                    youWin.style.visibility = 'visible';
+                    youWin.textContent = 'GANASTE';
+                    play.disabled = false;
+                    perdirCarta.disabled = true;
+                    plantarse.disabled = true;
+                    mymoney.textContent = money;
+                    replay.classList.remove('hiden');
+                    play.classList.add('hiden');
+                    money += 25;
+                    mymoney.textContent = money;
+                    turnoBoot();
 
-    if (cartasBoot.length === 2 && cartasUser.length > 2) {
+                    cartasBoot.forEach(As => {
+                        let existeAS = As.includes('A');
+                        if (existeAS && contadorBoot === 21) {
+                            const jb = document.createElement('span');
+                            jb.classList.add('jb');
+                            continerBoot.appendChild(jb);
+                            play.disabled = false;
+                            perdirCarta.disabled = true;
+                            plantarse.disabled = true;
+                            youWin.style.visibility = 'visible';
+                            youWin.textContent = 'EMPATE';
+                            money -= 25;
+                            mymoney.textContent = money;
+                        }
+                    });
+                }
+            });
 
-        cartasBoot.forEach(As => {
-            let existeAS = As.includes('A');
-            if (existeAS && contadorBoot === 21) {
-                console.log('primero');
-                const jb = document.createElement('span');
-                jb.classList.add('jb');
-                continerBoot.appendChild(jb);
-                youWin.style.visibility = 'visible';
-                play.disabled = false;
-                perdirCarta.disabled = true;
-                plantarse.disabled = true;
-                youWin.style.visibility = 'visible';
-                youWin.textContent = 'PERDISTE';
-            }
-        });
-    } else if (cartasBoot.length === 2 && cartasUser.length === 2 && contadorBoot > contadorUser) {
-        cartasBoot.forEach(As => {
-            let existeAS = As.includes('A');
-            if (existeAS && contadorBoot === 21) {
-                console.log('Ultimo')
-                const jb = document.createElement('span');
-                jb.classList.add('jb');
-                continerBoot.appendChild(jb);
-                youWin.style.visibility = 'visible';
-                play.disabled = false;
-                perdirCarta.disabled = true;
-                plantarse.disabled = true;
-                youWin.style.visibility = 'visible';
-                youWin.textContent = 'PERDISTE';
-            }
-        });
-    } else if (cartasUser.length === 2 && cartasBoot.length < 2) {
-        cartasUser.forEach(As => {
-            let existeAS = As.includes('A');
-            if (existeAS && contadorUser === 21) {
-                console.log('segundo');
-                const jb = document.createElement('span');
-                jb.classList.add('jb');
-                container.appendChild(jb);
-                youWin.style.visibility = 'visible';
-                youWin.textContent = 'GANASTE';
-                play.disabled = false;
-                perdirCarta.disabled = true;
-                plantarse.disabled = true;
-                mymoney.textContent = money;
-                replay.classList.remove('hiden');
-                play.classList.add('hiden');
-                money += 25;
-                mymoney.textContent = money;
-                turnoBoot();
+        } else if (cartasUser.length === 2 && cartasBoot.length === 2) {
+            cartasUser.forEach(As => {
+                let existeAS = As.includes('A');
+                if (existeAS && contadorUser === 21) {
+                    const jb = document.createElement('span');
+                    jb.classList.add('jb');
+                    container.appendChild(jb);
+                    youWin.style.visibility = 'visible';
+                    youWin.textContent = 'GANASTE';
+                    play.disabled = false;
+                    perdirCarta.disabled = true;
+                    plantarse.disabled = true;
+                    mymoney.textContent = money;
+                    replay.classList.remove('hiden');
+                    play.classList.add('hiden');
+                    money += 25;
+                    mymoney.textContent = money;
 
-                cartasBoot.forEach(As => {
-                    let existeAS = As.includes('A');
-                    if (existeAS && contadorBoot === 21) {
-                        console.log('tercero');
-                        const jb = document.createElement('span');
-                        jb.classList.add('jb');
-                        continerBoot.appendChild(jb);
-                        play.disabled = false;
-                        perdirCarta.disabled = true;
-                        plantarse.disabled = true;
-                        youWin.style.visibility = 'visible';
-                        youWin.textContent = 'EMPATE';
-                        money -= 25;
-                        mymoney.textContent = money;
-                    }
-                });
-            }
-        });
+                    cartasBoot.forEach(As => {
+                        let existeAS = As.includes('A');
+                        if (existeAS && contadorBoot === 21) {
+                            const jb = document.createElement('span');
+                            jb.classList.add('jb');
+                            continerBoot.appendChild(jb);
+                            play.disabled = false;
+                            perdirCarta.disabled = true;
+                            plantarse.disabled = true;
+                            youWin.style.visibility = 'visible';
+                            youWin.textContent = 'EMPATE';
+                            money -= 25;
+                            mymoney.textContent = money;
+                        }
+                    });
+                }
+            });
 
-    } else if (cartasUser.length === 2 && cartasBoot.length === 2) {
-        cartasUser.forEach(As => {
-            let existeAS = As.includes('A');
-            if (existeAS && contadorUser === 21) {
-                console.log('cuarto');
-                const jb = document.createElement('span');
-                jb.classList.add('jb');
-                container.appendChild(jb);
-                youWin.style.visibility = 'visible';
-                youWin.textContent = 'GANASTE';
-                play.disabled = false;
-                perdirCarta.disabled = true;
-                plantarse.disabled = true;
-                mymoney.textContent = money;
-                replay.classList.remove('hiden');
-                play.classList.add('hiden');
-                money += 25;
-                mymoney.textContent = money;
+        }
 
-                cartasBoot.forEach(As => {
-                    let existeAS = As.includes('A');
-                    if (existeAS && contadorBoot === 21) {
-                        console.log('quinto');
-                        const jb = document.createElement('span');
-                        jb.classList.add('jb');
-                        continerBoot.appendChild(jb);
-                        play.disabled = false;
-                        perdirCarta.disabled = true;
-                        plantarse.disabled = true;
-                        youWin.style.visibility = 'visible';
-                        youWin.textContent = 'EMPATE';
-                        money -= 25;
-                        mymoney.textContent = money;
-                    }
-                });
-            }
-        });
-
-    }
-
-
+    }, 200)
 }
 
 function recargarPlante() { // si el user pierde su capital puede reiniciarlo
