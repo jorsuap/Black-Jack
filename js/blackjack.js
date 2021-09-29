@@ -18,11 +18,12 @@ const cincuenta = document.querySelector('.cincuenta');
 const cien = document.querySelector('.cien');
 const totalApuesta = document.querySelector('.total_apuesta');
 const restaurarCapital = document.querySelector('.restaurarCapital');
+const soudrepartir = document.querySelector('.soudrepartir');
 
 //Declaracio e inicializacion de variables
 
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
+let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //
 let cartas = [];
 let cartasUser = [];
 let asuser = [];
@@ -163,6 +164,7 @@ function inicarJuego() { //Inicia el juego, reinicia varibles, quitar cartas de 
 }
 
 function repartirCarta() {
+    soudrepartir.play();
     //metodo random repartir cartas aleatorias
 
     singleCard = cards[Math.floor(Math.random() * cards.length)];
@@ -418,12 +420,12 @@ function turnoBoot() {
         crearCarta();
 
     } else if (contadorUser < 21) { // si el user se planta debe intentar igualar su puntaje o superarlo, lo que ocurra primero
-        while (contadorBoot < contadorUser && contadorBoot <= 21) {
+         do{
             repartirCarta(carta);
             cartasBoot.push(carta);
             asboot.push(carta);
             crearCarta();
-        };
+        }while (contadorBoot <= contadorUser && contadorBoot <= 21);
     } else if (contadorUser === 21) { // si el user saca 21 se evalua si contiene un As y solo dos cartas para determinar si es black jack
 
         cartasUser.forEach(barajaUser => {
