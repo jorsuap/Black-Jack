@@ -25,7 +25,9 @@ let cards = ['♥', '♣', '♦', '♠'];
 let numbers = ['A', '10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
 let cartas = [];
 let cartasUser = [];
+let asuser = [];
 let cartasBoot = [];
+let asboot = [];
 let money = 1000;
 let apuesta = 0;
 let contadorUser = 0;
@@ -126,7 +128,9 @@ function inicarJuego() {//Inicia el juego, reinicia varibles, quitar cartas de l
 
     cartas = [];
     cartasUser = [];
+    asuser = [];
     cartasBoot = [];
+    asboot = [];
     contadorUser = 0;
     contadorBoot = 0;
     conterUser = 2;
@@ -145,6 +149,7 @@ function inicarJuego() {//Inicia el juego, reinicia varibles, quitar cartas de l
     // reparte la primera carta del boot 
     repartirCarta(carta);
     cartasBoot.push(carta);
+    asboot.push(carta);
     crearCarta();
     conterBoot = 1;
 
@@ -188,6 +193,7 @@ function turnoUser() {// turno de usuario, inicialmente se ejecuta dos veces par
 
         repartirCarta(carta);
         cartasUser.push(carta);
+        asuser.push(carta);
 
         //Creamos elemntos para crear la carta con sus estilos
 
@@ -408,12 +414,14 @@ function turnoBoot() {
     if (contadorUser > 21) {// si el user paso de 21 solo debe sacar una carta cualqueira para ganar
         repartirCarta(carta);
         cartasBoot.push(carta);
+        asboot.push(carta);
         crearCarta();
 
     } else if (contadorUser < 21) {// si el user se planta debe intentar igualar su puntaje o superarlo, lo que ocurra primero
         while (contadorBoot < contadorUser && contadorBoot <= 21) {
             repartirCarta(carta);
             cartasBoot.push(carta);
+            asboot.push(carta);
             crearCarta();
         };
     } else if (contadorUser === 21) {// si el user saca 21 se evalua si contiene un As y solo dos cartas para determinar si es black jack
@@ -423,14 +431,16 @@ function turnoBoot() {
             if (asesU && cartasUser.length === 2) {// y si tiene solo dos cartas si se cumple el boot solo casa una carta
                 repartirCarta(carta);
                 cartasBoot.push(carta);
+                asboot.push(carta);
                 crearCarta();
-                return;
+ 
             } else if (cartasUser.length > 2) {// si saco 21 pero con varias cartas el boot intentara igualarlo
                 while (contadorBoot < contadorUser && contadorBoot <= 21) {
                     repartirCarta(carta);
                     cartasBoot.push(carta);
+                    asboot.push(carta);
                     crearCarta();
-                    return;
+
                 };
             }
         });
@@ -651,7 +661,7 @@ function count() {
 //'♥', '♣', '♦', '♠'
 function ases() {// funcion podemos evaluar si tienemos ases 
 
-    cartasUser.forEach(barajaUser => {
+    asuser.forEach(barajaUser => {
         let asesU = barajaUser.includes('A');
 
         if (asesU && contadorUser > 21) { //si tiene as y pasa de 21 el valor de as ahora vale 1, sino vale 11
@@ -659,11 +669,11 @@ function ases() {// funcion podemos evaluar si tienemos ases
             let unAs = barajaUser;
             contadorUser -= 10;
             text__count.textContent = contadorUser;
-            cartasUser = cartasUser.filter(cartaU => cartaU != unAs);
+            asuser = asuser.filter(cartaU => cartaU != unAs);
         }
     });
 
-    cartasBoot.forEach(barajaBoot => {
+    asboot.forEach(barajaBoot => {
         let asesB = barajaBoot.includes('A');
 
         if (asesB && contadorBoot > 21) { ////si tiene as y pasa de 21 el valor de as ahora vale 1, sino vale 11
@@ -671,7 +681,7 @@ function ases() {// funcion podemos evaluar si tienemos ases
             let unAs = barajaBoot;
             contadorBoot -= 10;
             countBoot.textContent = contadorBoot;
-            cartasBoot = cartasBoot.filter(cartaB => cartaB != unAs);
+            asboot = asboot.filter(cartaB => cartaB != unAs);
         }
     });
 
