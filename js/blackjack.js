@@ -55,7 +55,7 @@ replay.classList.add('hiden'); //esconder boton replay
 //recurepa el valor del dinero desde el local storage
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    money = JSON.parse(localStorage.getItem('saldo'));
+    money = JSON.parse(localStorage.getItem('saldo')) || 1000;
     console.log(money);
     mymoney.textContent = money;
 })
@@ -896,6 +896,7 @@ function recargarPlante() { // si el user pierde su capital puede reiniciarlo
             money = 1000;
             mymoney.textContent = money;
             restaurarCapital.style.display = 'none';
+            guardarStorage();
         });
     }
 };
