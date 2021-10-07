@@ -20,11 +20,12 @@ const totalApuesta = document.querySelector('.total_apuesta');
 const restaurarCapital = document.querySelector('.restaurarCapital');
 const soudrepartir = document.querySelector('.soudrepartir');
 const soundbarajar = document.querySelector('.soundbarajar');
+const apuestaActual = document.querySelector('.apuesta_actual');
 
 //Declaracio e inicializacion de variables
 
 let cards = ['♥', '♣', '♦', '♠'];
-let numbers = ['A', '2','3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //'2', '3', '4', '5', '6', '7', '8', '9',
+let numbers = ['A','2','3', '4', '5', '6', '7', '8', '9','10', 'J', 'Q', 'K']; //'2','3', '4', '5', '6', '7', '8', '9',
 let cartas = [];
 let cartasUser = [];
 let asuser = [];
@@ -50,6 +51,14 @@ perdirCarta.disabled = true;
 plantarse.disabled = true;
 
 replay.classList.add('hiden'); //esconder boton replay
+
+//recurepa el valor del dinero desde el local storage
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    money = JSON.parse(localStorage.getItem('saldo'));
+    console.log(money);
+    mymoney.textContent = money;
+})
 
 perdirCarta.addEventListener('click', turnoUser); //boton pedir carta llama funion turnoUser()
 
@@ -79,6 +88,7 @@ replay.addEventListener('click', () => { //repley permite junar una nueva ronda 
 
     apuesta = 0;
     totalApuesta.textContent = apuesta;
+    apuestaActual.textContent = apuesta;
 
     panelApuesta.classList.remove('hiden');
     text__count.style.visibility = 'hidden';
@@ -104,6 +114,8 @@ venticinco.addEventListener('click', () => {
         money -= apuesta25;
         mymoney.textContent = money;
         totalApuesta.textContent = apuesta;
+        apuestaActual.textContent = apuesta;
+        guardarStorage();
     }
 });
 
@@ -114,6 +126,8 @@ cincuenta.addEventListener('click', () => {
         money -= apuesta50;
         mymoney.textContent = money;
         totalApuesta.textContent = apuesta;
+        apuestaActual.textContent = apuesta;
+        guardarStorage();
     }
 });
 cien.addEventListener('click', () => {
@@ -123,6 +137,8 @@ cien.addEventListener('click', () => {
         money -= apuesta100;
         mymoney.textContent = money;
         totalApuesta.textContent = apuesta;
+        apuestaActual.textContent = apuesta;
+        guardarStorage();
     }
 });
 
@@ -706,6 +722,7 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
             plantarse.disabled = true;
             money += apuesta * 2;
             mymoney.textContent = money;
+            guardarStorage();
 
         } else if (contadorUser <= 21 && contadorBoot > 21) {
 
@@ -716,6 +733,7 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
             plantarse.disabled = true;
             money += apuesta * 2;
             mymoney.textContent = money;
+            guardarStorage();
 
         } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
 
@@ -744,10 +762,12 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
             plantarse.disabled = true;
             money += apuesta;
             mymoney.textContent = money;
+            guardarStorage();
         };
 
         replay.classList.remove('hiden');
         blackJack();
+        
     }, 200)
 };
 
@@ -769,6 +789,8 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                     youWin.textContent = 'PERDISTE';
                 }
             });
+            console.log('entre 1');
+            return;
         } else if (cartasBoot.length === 2 && cartasUser.length === 2 && contadorBoot > contadorUser) {
             cartasBoot.forEach(As => {
                 let existeAS = As.includes('A');
@@ -784,6 +806,8 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                     youWin.textContent = 'PERDISTE';
                 }
             });
+            console.log('entre 2');
+            return;
         } else if (cartasUser.length === 2 && cartasBoot.length < 2) {
             cartasUser.forEach(As => {
                 let existeAS = As.includes('A');
@@ -791,16 +815,16 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                     const jb = document.createElement('span');
                     jb.classList.add('jb');
                     container.appendChild(jb);
-                    youWin.style.visibility = 'visible';
-                    youWin.textContent = 'GANASTE';
-                    play.disabled = false;
-                    perdirCarta.disabled = true;
-                    plantarse.disabled = true;
-                    mymoney.textContent = money;
-                    replay.classList.remove('hiden');
-                    play.classList.add('hiden');
-                    money += 25;
-                    mymoney.textContent = money;
+                    // youWin.style.visibility = 'visible';
+                    // youWin.textContent = 'GANASTE';
+                    // play.disabled = false;
+                    // perdirCarta.disabled = true;
+                    // plantarse.disabled = true;
+                    // replay.classList.remove('hiden');
+                    // play.classList.add('hiden');
+                    // money += 25;
+                    // mymoney.textContent = money;
+                    // guardarStorage();
                     turnoBoot();
 
                     cartasBoot.forEach(As => {
@@ -814,13 +838,15 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                             plantarse.disabled = true;
                             youWin.style.visibility = 'visible';
                             youWin.textContent = 'EMPATE';
-                            money -= 25;
-                            mymoney.textContent = money;
+                            // money -= 25;
+                            // mymoney.textContent = money;
+                            // guardarStorage();
                         }
                     });
                 }
             });
-
+            console.log('entre 3');
+            return;
         } else if (cartasUser.length === 2 && cartasBoot.length === 2) {
             cartasUser.forEach(As => {
                 let existeAS = As.includes('A');
@@ -833,11 +859,11 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                     play.disabled = false;
                     perdirCarta.disabled = true;
                     plantarse.disabled = true;
-                    mymoney.textContent = money;
                     replay.classList.remove('hiden');
                     play.classList.add('hiden');
                     money += 25;
                     mymoney.textContent = money;
+                    guardarStorage();
 
                     cartasBoot.forEach(As => {
                         let existeAS = As.includes('A');
@@ -852,13 +878,14 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                             youWin.textContent = 'EMPATE';
                             money -= 25;
                             mymoney.textContent = money;
+                            guardarStorage();
                         }
                     });
                 }
             });
-
+            console.log('entre 4');
+            return;
         }
-
     }, 200)
 }
 
@@ -872,3 +899,7 @@ function recargarPlante() { // si el user pierde su capital puede reiniciarlo
         });
     }
 };
+
+function guardarStorage() {
+    localStorage.setItem('saldo', JSON.stringify(money));
+}

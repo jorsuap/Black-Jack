@@ -477,12 +477,27 @@ span {
     border: solid 1px hsl(0, 0%, 100%);
 }
 
-.fichas {
-    width: 200px;
+.contenedor-fichas{
     position: absolute;
     top: 20px;
     right: 20px;
 }
+
+.fichas {
+    position: absolute;
+    width: 200px;
+    top: 20px;
+    right: 20px;
+}
+.apuesta_actual{
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+}
+
 
 .jb {
     background: url(../imagenes/jb.png) no-repeat;
