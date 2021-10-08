@@ -56,7 +56,6 @@ replay.classList.add('hiden'); //esconder boton replay
 
 document.addEventListener('DOMContentLoaded', ()=>{
     money = JSON.parse(localStorage.getItem('saldo')) || 1000;
-    console.log(money);
     mymoney.textContent = money;
 })
 
@@ -104,6 +103,9 @@ replay.addEventListener('click', () => { //repley permite junar una nueva ronda 
     };
     replay.classList.add('hiden');
     play.classList.remove('hiden');
+    apuestaActual.classList.remove('winapuesta');
+    apuestaActual.classList.remove('empate');
+    apuestaActual.classList.remove('lossapuesta');
 });
 
 //valores posibles para apostar
@@ -722,6 +724,9 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
             plantarse.disabled = true;
             money += apuesta * 2;
             mymoney.textContent = money;
+            apuestaActual.textContent =`+ ${apuesta*2}`
+            apuestaActual.classList.add('winapuesta');
+            
             guardarStorage();
 
         } else if (contadorUser <= 21 && contadorBoot > 21) {
@@ -733,6 +738,9 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
             plantarse.disabled = true;
             money += apuesta * 2;
             mymoney.textContent = money;
+            apuestaActual.textContent =`+ ${apuesta*2}`
+            apuestaActual.classList.add('winapuesta');
+            
             guardarStorage();
 
         } else if (contadorUser < contadorBoot && contadorBoot <= 21) {
@@ -742,6 +750,8 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
             play.disabled = false;
             perdirCarta.disabled = true;
             plantarse.disabled = true;
+            apuestaActual.textContent =`+ ${apuesta}`
+            apuestaActual.classList.add('lossapuesta');
 
         } else if (contadorUser > 21 && contadorBoot <= 21) {
 
@@ -753,6 +763,8 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
             mymoney.textContent = money;
             replay.classList.remove('hiden');
             play.classList.add('hiden');
+            apuestaActual.textContent =`+ ${apuesta}`
+            apuestaActual.classList.add('lossapuesta');
         } else if (contadorUser === contadorBoot && contadorUser <= 21) {
 
             youWin.style.visibility = 'visible';
@@ -762,10 +774,13 @@ function quienGana() { // dependiendo de los puntos determinamos quien gana la m
             plantarse.disabled = true;
             money += apuesta;
             mymoney.textContent = money;
+            apuestaActual.textContent =`+ ${apuesta}`
+            apuestaActual.classList.add('empate');
             guardarStorage();
         };
 
         replay.classList.remove('hiden');
+        
         blackJack();
         
     }, 200)
@@ -787,9 +802,9 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                     plantarse.disabled = true;
                     youWin.style.visibility = 'visible';
                     youWin.textContent = 'PERDISTE';
+                    apuestaActual.classList.add('lossapuesta');
                 }
             });
-            console.log('entre 1');
             return;
         } else if (cartasBoot.length === 2 && cartasUser.length === 2 && contadorBoot > contadorUser) {
             cartasBoot.forEach(As => {
@@ -804,9 +819,9 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                     plantarse.disabled = true;
                     youWin.style.visibility = 'visible';
                     youWin.textContent = 'PERDISTE';
+                    apuestaActual.classList.add('lossapuesta');
                 }
             });
-            console.log('entre 2');
             return;
         } else if (cartasUser.length === 2 && cartasBoot.length < 2) {
             cartasUser.forEach(As => {
@@ -838,6 +853,7 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                             plantarse.disabled = true;
                             youWin.style.visibility = 'visible';
                             youWin.textContent = 'EMPATE';
+                            apuestaActual.classList.add('empate');
                             // money -= 25;
                             // mymoney.textContent = money;
                             // guardarStorage();
@@ -845,7 +861,6 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                     });
                 }
             });
-            console.log('entre 3');
             return;
         } else if (cartasUser.length === 2 && cartasBoot.length === 2) {
             cartasUser.forEach(As => {
@@ -863,6 +878,7 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                     play.classList.add('hiden');
                     money += 25;
                     mymoney.textContent = money;
+                    apuestaActual.classList.add('winapuesta');
                     guardarStorage();
 
                     cartasBoot.forEach(As => {
@@ -878,12 +894,12 @@ function blackJack() { // evalua si se gana por black jack para mostrar una expe
                             youWin.textContent = 'EMPATE';
                             money -= 25;
                             mymoney.textContent = money;
+                            apuestaActual.classList.add('empate');
                             guardarStorage();
                         }
                     });
                 }
             });
-            console.log('entre 4');
             return;
         }
     }, 200)
