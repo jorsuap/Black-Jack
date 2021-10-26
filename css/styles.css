@@ -516,7 +516,7 @@ span {
 .winapuesta {
     position: relative;
     animation-name: win;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-iteration-count: linear forwards;
     opacity: 0;
     color: rgb(26, 196, 26);
@@ -525,7 +525,7 @@ span {
 .lossapuesta {
     position: relative;
     animation-name: win;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-iteration-count: linear forwards;
     opacity: 0;
     color: rgb(226, 29, 29);
@@ -534,7 +534,7 @@ span {
 .empate {
     position: relative;
     animation-name: win;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-iteration-count: linear forwards;
     opacity: 0;
     color: white;
