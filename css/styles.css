@@ -520,6 +520,7 @@ span {
     animation-iteration-count: linear forwards;
     opacity: 0;
     color: rgb(26, 196, 26);
+    font-weight: 600;
 }
 .lossapuesta {
     position: relative;
@@ -528,6 +529,7 @@ span {
     animation-iteration-count: linear forwards;
     opacity: 0;
     color: rgb(226, 29, 29);
+    font-weight: 600;
 }
 .empate {
     position: relative;
@@ -536,6 +538,7 @@ span {
     animation-iteration-count: linear forwards;
     opacity: 0;
     color: white;
+    font-weight: 600;
 }
 
 @keyframes win {
